@@ -1,0 +1,22 @@
+backend:
+  name: github
+  repo: CaliberBusiness/CaliberBusiness # You might need to change this if your repo is named differently
+  branch: main # Branch to update
+  base_url: https://caliber-business.vercel.app
+  auth_endpoint: api/auth
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "policies"
+    label: "Policies"
+    folder: "data/content/policies"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", required: false}
+      - {label: "Publish Date", name: "publishDate", widget: "datetime", required: false}
+      - {label: "Last Updated", name: "lastUpdated", widget: "datetime", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
