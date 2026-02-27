@@ -7,9 +7,11 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingContact from "@/components/FloatingContact";
+import { getHomepageData } from "@/lib/getHomepageData";
 
 export default async function PrivacyPolicy() {
     const filePath = path.join(process.cwd(), "data/content/policies/privacy-policy.md");
+    const homepageData = getHomepageData();
 
     let content = "";
     let data = { title: "Privacy Policy", lastUpdated: new Date().toISOString() };
@@ -53,7 +55,7 @@ export default async function PrivacyPolicy() {
                 </div>
             </div>
 
-            <Footer />
+            <Footer data={homepageData.footer} />
             <ScrollToTop />
             <FloatingContact />
         </main>

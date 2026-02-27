@@ -5,7 +5,19 @@ import Link from 'next/link';
 import { getImagePath } from '@/lib/utils';
 import ObfuscatedEmail from './ObfuscatedEmail';
 
-export default function Footer() {
+interface FooterProps {
+  data: {
+    tagline: string;
+    address: string;
+    phone: string;
+    phoneRaw: string;
+    emailUser: string;
+    emailDomain: string;
+    fraudNotice: string;
+  };
+}
+
+export default function Footer({ data }: FooterProps) {
   return (
     <footer id="contact" className="bg-secondary/40 border-t border-white/5 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,7 +39,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="body-text text-sm">
-              Empowering businesses with world-class remote talent. Your growth is our mission.
+              {data.tagline}
             </p>
           </div>
 
@@ -47,19 +59,19 @@ export default function Footer() {
             <ul className="space-y-4 text-sm text-muted-foreground">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary shrink-0" />
-                <span>Ruberen Complex, Tagbilaran City, Bohol</span>
+                <span>{data.address}</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-primary shrink-0" />
                 <ObfuscatedEmail
-                  user="info"
-                  domain="caliberbusinessresource.com"
+                  user={data.emailUser}
+                  domain={data.emailDomain}
                   className="hover:text-white transition-colors"
                 />
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                <a href="tel:+14059268324" className="hover:text-white transition-colors">+1 (405) 926-8324</a>
+                <a href={`tel:${data.phoneRaw}`} className="hover:text-white transition-colors">{data.phone}</a>
               </li>
             </ul>
           </div>
@@ -76,10 +88,9 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="pt-8 border-t border-border space-y-4">
-          {/* Phase 7: Fraud Protection Notice */}
           <p className="text-center text-xs text-gray-500">
-            Caliber Business Resource does not charge applicants any recruitment fees. Please report suspicious communications to{' '}
-            <ObfuscatedEmail user="info" domain="caliberbusinessresource.com" className="text-primary hover:underline" />.
+            {data.fraudNotice}{' '}
+            <ObfuscatedEmail user={data.emailUser} domain={data.emailDomain} className="text-primary hover:underline" />.
           </p>
           <p className="text-center text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Caliber Business Resource. All rights reserved.
@@ -89,5 +100,3 @@ export default function Footer() {
     </footer>
   );
 }
-
-

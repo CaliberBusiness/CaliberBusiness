@@ -7,10 +7,12 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingContact from "@/components/FloatingContact";
+import { getHomepageData } from "@/lib/getHomepageData";
 
 // This is now a Server Component to read from the filesystem directly
 export default async function TermsOfUse() {
     const filePath = path.join(process.cwd(), "data/content/policies/terms-of-use.md");
+    const homepageData = getHomepageData();
 
     let content = "";
     let data = { title: "Terms of Use", lastUpdated: new Date().toISOString() };
@@ -51,7 +53,7 @@ export default async function TermsOfUse() {
                 </div>
             </div>
 
-            <Footer />
+            <Footer data={homepageData.footer} />
             <ScrollToTop />
             <FloatingContact />
         </main>

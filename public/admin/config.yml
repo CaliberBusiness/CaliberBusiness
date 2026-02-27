@@ -1,7 +1,7 @@
 backend:
   name: github
-  repo: CaliberBusiness/CaliberBusiness # You might need to change this if your repo is named differently
-  branch: main # Branch to update
+  repo: CaliberBusiness/CaliberBusiness
+  branch: main
   base_url: https://caliber-business.vercel.app
   auth_endpoint: api/auth
 
@@ -9,14 +9,235 @@ media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
+  # --- Policies (folder collection, one file per policy) ---
   - name: "policies"
     label: "Policies"
     folder: "data/content/policies"
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Date", name: "date", widget: "datetime", required: false}
-      - {label: "Publish Date", name: "publishDate", widget: "datetime", required: false}
-      - {label: "Last Updated", name: "lastUpdated", widget: "datetime", required: false}
-      - {label: "Body", name: "body", widget: "markdown"}
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Last Updated", name: "lastUpdated", widget: "datetime", required: false }
+      - { label: "Body", name: "body", widget: "markdown" }
+
+  # --- Homepage (single file collection) ---
+  - name: "homepage"
+    label: "Homepage"
+    files:
+      - name: "homepage_content"
+        label: "Homepage Content"
+        file: "data/content/homepage.json"
+        fields:
+          # ===== HERO SECTION =====
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Badge Text", name: "badge", widget: "string" }
+              - { label: "Headline", name: "headline", widget: "string" }
+              - { label: "Headline Highlight", name: "headlineHighlight", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - { label: "Primary CTA Label", name: "ctaPrimary", widget: "string" }
+              - { label: "Primary CTA Link", name: "ctaPrimaryLink", widget: "string" }
+              - { label: "Secondary CTA Label", name: "ctaSecondary", widget: "string" }
+              - { label: "Secondary CTA Link", name: "ctaSecondaryLink", widget: "string" }
+              - { label: "Hero Main Image", name: "heroMainImage", widget: "image" }
+              - { label: "Hero Secondary Image 1", name: "heroSecondary1Image", widget: "image" }
+              - { label: "Hero Secondary Image 2", name: "heroSecondary2Image", widget: "image" }
+              - label: "Trust Stats"
+                name: "trustStats"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Value", name: "value", widget: "string" }
+
+          # ===== CREDIBILITY SECTION =====
+          - label: "Credibility Section"
+            name: "credibility"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Title Highlight", name: "titleHighlight", widget: "string" }
+              - label: "Points"
+                name: "points"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string", hint: "Lucide icon name (e.g. Shield, Users, Clock)" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          # ===== STATISTICS SECTION =====
+          - label: "Statistics Section"
+            name: "statistics"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Title Highlight", name: "titleHighlight", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - label: "Stats"
+                name: "stats"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "Value (Number)", name: "value", widget: "number" }
+                  - { label: "Suffix", name: "suffix", widget: "string", required: false }
+                  - { label: "Prefix", name: "prefix", widget: "string", required: false }
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Source", name: "source", widget: "string", required: false }
+              - label: "Approaches"
+                name: "approaches"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Points", name: "points", widget: "list", field: { label: "Point", name: "point", widget: "string" } }
+
+          # ===== SERVICES SECTION =====
+          - label: "Services Section"
+            name: "services"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Title Highlight", name: "titleHighlight", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - label: "Service Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string", hint: "Lucide icon name" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+                  - { label: "Highlight", name: "highlight", widget: "boolean", default: false }
+
+          # ===== HOW IT WORKS SECTION =====
+          - label: "How It Works Section"
+            name: "howItWorks"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Title Highlight", name: "titleHighlight", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - label: "Steps"
+                name: "steps"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "Step Number", name: "number", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          # ===== CULTURE SECTION =====
+          - label: "Culture Section"
+            name: "culture"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Title Highlight", name: "titleHighlight", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - { label: "Video URL", name: "videoUrl", widget: "string" }
+              - { label: "Video Poster Image", name: "videoPoster", widget: "image" }
+              - label: "Culture Cards"
+                name: "cards"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+              - { label: "Quote Text", name: "quoteText", widget: "text" }
+              - { label: "Quote Author", name: "quoteAuthor", widget: "string" }
+
+          # ===== JOB LISTINGS SECTION =====
+          - label: "Job Listings Section"
+            name: "jobListings"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Title Highlight", name: "titleHighlight", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Features", name: "features", widget: "list", field: { label: "Feature", name: "feature", widget: "string" } }
+              - { label: "CTA Label", name: "ctaLabel", widget: "string" }
+              - { label: "CTA Link", name: "ctaLink", widget: "string" }
+              - { label: "CTA Subtext", name: "ctaSubtext", widget: "text" }
+              - { label: "Fraud Notice", name: "fraudNotice", widget: "text" }
+
+          # ===== ABOUT SECTION =====
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Story Title", name: "storyTitle", widget: "string" }
+              - { label: "Story Title Highlight", name: "storyTitleHighlight", widget: "string" }
+              - { label: "Story Paragraphs", name: "storyParagraphs", widget: "list", field: { label: "Paragraph", name: "paragraph", widget: "text" } }
+              - { label: "Story Video URL", name: "storyVideoUrl", widget: "string" }
+              - { label: "CEO Quote", name: "ceoQuote", widget: "text" }
+              - { label: "CEO Message", name: "ceoMessage", widget: "text" }
+              - { label: "CEO Name", name: "ceoName", widget: "string" }
+              - { label: "CEO Title", name: "ceoTitle", widget: "string" }
+              - { label: "CEO Image", name: "ceoImage", widget: "image" }
+              - { label: "Vision Text", name: "visionText", widget: "text" }
+              - { label: "Mission Text", name: "missionText", widget: "text" }
+              - { label: "Team Title", name: "teamTitle", widget: "string" }
+              - { label: "Team Title Highlight", name: "teamTitleHighlight", widget: "string" }
+              - { label: "Team Subtitle", name: "teamSubtitle", widget: "text" }
+              - label: "Team Members"
+                name: "teamMembers"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Role", name: "role", widget: "string" }
+                  - { label: "Image", name: "image", widget: "image" }
+              - label: "Ethos"
+                name: "ethos"
+                widget: "list"
+                fields:
+                  - { label: "Letter", name: "letter", widget: "string" }
+                  - { label: "Text", name: "text", widget: "string" }
+              - { label: "Why Join Title", name: "whyJoinTitle", widget: "string" }
+              - { label: "Why Join Subtitle", name: "whyJoinSubtitle", widget: "text" }
+              - label: "Values"
+                name: "values"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          # ===== DIFFERENTIATION SECTION =====
+          - label: "Differentiation Section"
+            name: "differentiation"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Title Highlight", name: "titleHighlight", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - label: "Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string" }
+                  - { label: "Title", name: "title", widget: "string" }
+                  - { label: "Description", name: "description", widget: "text" }
+
+          # ===== GOOGLE MAPS SECTION =====
+          - label: "Google Maps Section"
+            name: "googleMaps"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subtitle", widget: "text" }
+              - { label: "Embed URL", name: "embedUrl", widget: "string" }
+              - { label: "Address", name: "address", widget: "string" }
+
+          # ===== FOOTER SECTION =====
+          - label: "Footer Section"
+            name: "footer"
+            widget: "object"
+            fields:
+              - { label: "Tagline", name: "tagline", widget: "text" }
+              - { label: "Address", name: "address", widget: "string" }
+              - { label: "Phone (Display)", name: "phone", widget: "string" }
+              - { label: "Phone (Raw)", name: "phoneRaw", widget: "string" }
+              - { label: "Email User", name: "emailUser", widget: "string" }
+              - { label: "Email Domain", name: "emailDomain", widget: "string" }
+              - { label: "Fraud Notice", name: "fraudNotice", widget: "text" }

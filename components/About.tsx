@@ -5,33 +5,35 @@ import { useState, useRef } from 'react';
 import { getImagePath } from '@/lib/utils';
 import { useScrollAnimation } from '@/lib/useScrollAnimation';
 
+const valueIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  Building2, Target, Heart
+};
 
-const ethos = [
-  { letter: 'R', text: 'RISE by lifting our People & Clients' },
-  { letter: 'I', text: 'IMPACT through Strategic Execution' },
-  { letter: 'S', text: 'SUSTAINABILITY through Initiative & Reliability' },
-  { letter: 'E', text: 'EMPOWERMENT by Engagement' }
-];
+interface AboutProps {
+  data: {
+    storyTitle: string;
+    storyTitleHighlight: string;
+    storyParagraphs: string[];
+    storyVideoUrl: string;
+    ceoQuote: string;
+    ceoMessage: string;
+    ceoName: string;
+    ceoTitle: string;
+    ceoImage: string;
+    visionText: string;
+    missionText: string;
+    teamTitle: string;
+    teamTitleHighlight: string;
+    teamSubtitle: string;
+    teamMembers: { name: string; role: string; image: string }[];
+    ethos: { letter: string; text: string }[];
+    whyJoinTitle: string;
+    whyJoinSubtitle: string;
+    values: { icon: string; title: string; description: string }[];
+  };
+}
 
-const values = [
-  {
-    icon: Building2,
-    title: 'Professional Excellence',
-    description: 'We maintain the highest standards in everything we do, delivering exceptional service to our clients and creating a workplace where excellence thrives.'
-  },
-  {
-    icon: Target,
-    title: 'Growth & Development',
-    description: 'We invest in our people through continuous training, mentorship programs, and clear career progression paths.'
-  },
-  {
-    icon: Heart,
-    title: 'Collaborative Culture',
-    description: 'We foster a supportive environment where teamwork, respect, and open communication are valued by everyone.'
-  }
-];
-
-export default function About() {
+export default function About({ data }: AboutProps) {
   const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -48,9 +50,9 @@ export default function About() {
       setIsMuted(!isMuted);
     }
   };
+
   return (
     <section id="about" className="py-24 bg-background relative overflow-hidden">
-      {/* Decorative blobs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
 
@@ -63,35 +65,22 @@ export default function About() {
             className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 scroll-slide-up ${storyAnimation.isVisible ? 'visible' : ''}`}
           >
             <h2 className="heading-2 mb-6 sm:mb-8 text-balance">
-              Our <span className="text-primary">Story</span>
+              {data.storyTitle} <span className="text-primary">{data.storyTitleHighlight}</span>
             </h2>
 
             <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-              {/* Text Content - Left Side */}
               <div className="space-y-4 sm:space-y-6 body-text">
-                <p>
-                  At Caliber Business Resource Incorporated, we are dedicated to transforming the way businesses
-                  approach remote staffing and operational support. CBR was founded not only from a passion for
-                  business innovation, but also from a God-given desire to be a blessing to our people and our nation.
-                </p>
-                <p>
-                  We specialize in building high-performing, customized teams through our micro call center offices
-                  located in both the vibrant cities and the quieter, yet equally talented, heartlands of the Philippine Islands.
-                </p>
-                <p>
-                  We live by the name <span className="text-primary font-bold">CALIBER</span>—not just in the level of our skill, but in the integrity of our character.
-                  Everything we do is done with excellence, with a servant heart, and with the understanding that this
-                  work is a stewardship entrusted to us.
-                </p>
+                {data.storyParagraphs.map((paragraph, idx) => (
+                  <p key={idx}>{paragraph}</p>
+                ))}
               </div>
 
-              {/* Video - Right Side */}
               <div className="relative group lg:sticky lg:top-24">
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30 opacity-20 blur-2xl group-hover:opacity-30 transition-opacity duration-500 rounded-2xl" />
                 <div className="relative rounded-xl overflow-hidden border border-white/10 shadow-2xl">
                   <video
                     ref={videoRef}
-                    src={getImagePath('/video/video.mp4')}
+                    src={getImagePath(data.storyVideoUrl)}
                     autoPlay
                     loop
                     muted={isMuted}
@@ -111,7 +100,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Message from CEO (Redesigned as a Quote/Highlight section) */}
+        {/* Message from CEO */}
         <div
           ref={ceoAnimation.elementRef}
           className={`mb-24 sm:mb-32 relative scroll-slide-up ${ceoAnimation.isVisible ? 'visible' : ''}`}
@@ -124,20 +113,19 @@ export default function About() {
                 <span className="text-primary font-bold uppercase tracking-widest text-xs sm:text-sm">Message from the CEO</span>
               </div>
               <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-4 sm:mb-6 leading-tight">
-                "We believe that when we put God first, everything else follows."
+                &quot;{data.ceoQuote}&quot;
               </h3>
               <p className="text-gray-400 mb-6 sm:mb-8 leading-relaxed text-sm sm:text-base">
-                Caliber Business Resource was born out of a deeper purpose. What began as a business idea quickly
-                became a mission: to give back to our fellow Filipinos and, above all, to glorify Him through our work.
+                {data.ceoMessage}
               </p>
               <cite className="not-italic">
-                <div className="font-bold text-white text-base sm:text-lg">Chrissa B. Ranis</div>
-                <div className="text-primary text-sm sm:text-base">Founder & CEO</div>
+                <div className="font-bold text-white text-base sm:text-lg">{data.ceoName}</div>
+                <div className="text-primary text-sm sm:text-base">{data.ceoTitle}</div>
               </cite>
             </div>
             <div className="order-1 lg:order-2">
               <img
-                src={getImagePath('/images/profile-fit.png')}
+                src={getImagePath(data.ceoImage)}
                 alt="CEO"
                 className="rounded-2xl shadow-2xl w-full max-w-md mx-auto border-4 border-white/5"
               />
@@ -151,16 +139,8 @@ export default function About() {
           className={`grid sm:grid-cols-2 gap-4 sm:gap-6 mb-24 sm:mb-32 scroll-slide-up ${visionMissionAnimation.isVisible ? 'visible' : ''}`}
         >
           {[
-            {
-              title: 'Vision',
-              text: 'To be a game-changer and leader in micro call center solutions, offering the simplest business solutions and robust manpower resources tailored for thriving business enterprises.',
-              gradient: 'from-blue-600/20 to-blue-900/20'
-            },
-            {
-              title: 'Mission',
-              text: 'We aim to provide unparalleled micro call center and backend solutions, enabling small to medium-sized businesses to achieve strategic clarity and expand their market presence while we manage the operational intricacies.',
-              gradient: 'from-amber-500/20 to-amber-700/20'
-            }
+            { title: 'Vision', text: data.visionText, gradient: 'from-blue-600/20 to-blue-900/20' },
+            { title: 'Mission', text: data.missionText, gradient: 'from-amber-500/20 to-amber-700/20' }
           ].map((item, idx) => (
             <div key={idx} className={`p-6 sm:p-8 rounded-2xl bg-gradient-to-br ${item.gradient} border border-white/10 hover:border-primary/30 transition-colors`}>
               <h3 className="text-2xl sm:text-3xl font-bold text-white mb-3 sm:mb-4">{item.title}</h3>
@@ -176,58 +156,30 @@ export default function About() {
             className={`text-center mb-12 sm:mb-16 scroll-slide-up ${teamAnimation.isVisible ? 'visible' : ''} px-4 sm:px-0`}
           >
             <h2 className="heading-2 mb-4 sm:mb-6">
-              Meet Our <span className="text-primary">Team</span>
+              {data.teamTitle} <span className="text-primary">{data.teamTitleHighlight}</span>
             </h2>
             <p className="body-text max-w-2xl mx-auto text-balance">
-              Our leadership team brings decades of combined experience in BPO, operational excellence, and strategic management.
+              {data.teamSubtitle}
             </p>
           </div>
 
           <div ref={teamAnimation.elementRef} className={`flex flex-wrap justify-center gap-8 scroll-slide-up stagger-2 ${teamAnimation.isVisible ? 'visible' : ''}`}>
-            {[
-              {
-                name: 'Chrissa B. Ranis',
-                role: 'Founder & Chairman of the Board',
-                image: getImagePath('/images/Chrissa.png')
-              },
-              {
-                name: 'Atty. Euchrissa Theresa Ladrera',
-                role: 'Corporate Secretary',
-                image: getImagePath('/images/Euchrissa.png')
-              },
-              {
-                name: 'Bertch Ian Ranis',
-                role: 'Director for Marketing',
-                image: getImagePath('/images/Bertch.png')
-              },
-              {
-                name: 'Laureen Lejarde',
-                role: 'Director for Operations',
-                image: getImagePath('/images/Laureen.png')
-              },
-              {
-                name: 'Joanne Apat',
-                role: 'Business Development Partner',
-                image: getImagePath('/images/Joanne.png')
-              }
-            ].map((member, index) => (
+            {data.teamMembers.map((member, index) => (
               <div
                 key={member.name}
                 className="group relative w-full sm:w-[calc(50%-2rem)] lg:w-[calc(33.33%-2rem)] xl:w-[calc(20%-2rem)]"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-accent/20 rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-500" />
-
                 <div className="relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 glass-card transition-all duration-300 group-hover:-translate-y-2 h-full">
                   <div className="aspect-[3/4] relative overflow-hidden">
                     <img
-                      src={member.image}
+                      src={getImagePath(member.image)}
                       alt={member.name}
                       className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110 group-hover:grayscale-0 grayscale"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-80" />
                   </div>
-
                   <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                     <h3 className="text-xl font-bold text-white mb-1">{member.name}</h3>
                     <p className="text-primary font-medium text-sm uppercase tracking-wider">{member.role}</p>
@@ -248,7 +200,7 @@ export default function About() {
             <div className="w-24 h-1 bg-primary mx-auto rounded-full" />
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {ethos.map((item) => (
+            {data.ethos.map((item) => (
               <div
                 key={item.letter}
                 className="group p-6 rounded-2xl bg-white/5 border border-white/10 hover:bg-primary/20 hover:border-primary/50 transition-all duration-300 transform hover:-translate-y-2 text-center"
@@ -272,24 +224,24 @@ export default function About() {
 
           <div className="relative z-10 p-8 md:p-16 lg:p-20">
             <div className="max-w-3xl mb-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Why Join Caliber?</h2>
-              <p className="text-gray-400 text-lg">
-                We believe our success is driven by our people. We're committed to creating an environment where
-                talented individuals can thrive, grow their careers, and make a meaningful impact.
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{data.whyJoinTitle}</h2>
+              <p className="text-gray-400 text-lg">{data.whyJoinSubtitle}</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {values.map((value, index) => (
-                <div
-                  key={index}
-                  className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-colors"
-                >
-                  <value.icon className="w-10 h-10 text-primary mb-6" />
-                  <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{value.description}</p>
-                </div>
-              ))}
+              {data.values.map((value, index) => {
+                const IconComponent = valueIconMap[value.icon];
+                return (
+                  <div
+                    key={index}
+                    className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:bg-white/10 transition-colors"
+                  >
+                    {IconComponent && <IconComponent className="w-10 h-10 text-primary mb-6" />}
+                    <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
+                    <p className="text-gray-400 leading-relaxed">{value.description}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>

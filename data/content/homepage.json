@@ -1,0 +1,356 @@
+{
+    "hero": {
+        "badge": "Trusted Outsourcing Partner",
+        "headline": "Scale Your Operations.",
+        "headlineHighlight": "Reduce Hiring Friction.",
+        "subtitle": "Premium remote staffing solutions from the Philippines. We provide structured evaluation, dedicated account management, and managed onboarding for a long-term partnership model.",
+        "ctaPrimary": "Schedule a Consultation",
+        "ctaPrimaryLink": "#connect",
+        "ctaSecondary": "Apply for a Job",
+        "ctaSecondaryLink": "#open-roles",
+        "heroMainImage": "/images/hero-main.jpg",
+        "heroSecondary1Image": "/images/hero-secondary-1.jpg",
+        "heroSecondary2Image": "/images/hero-secondary-2.jpg",
+        "trustStats": [
+            {
+                "label": "Leadership",
+                "value": "15+ Yrs"
+            },
+            {
+                "label": "Facility Type",
+                "value": "Micro-Center"
+            },
+            {
+                "label": "Max Cost Savings",
+                "value": "80%"
+            },
+            {
+                "label": "Talent Vetting",
+                "value": "Multi-Stage"
+            }
+        ]
+    },
+    "credibility": {
+        "title": "Why Businesses",
+        "titleHighlight": "Trust Caliber",
+        "points": [
+            {
+                "icon": "Shield",
+                "title": "Structured Multi-Stage Vetting",
+                "description": "Comprehensive screening and evaluation to ensure top-tier talent matches your operational needs perfectly."
+            },
+            {
+                "icon": "Users",
+                "title": "Dedicated Account Management",
+                "description": "A single point of contact dedicated to understanding your business and ensuring a long-term partnership."
+            },
+            {
+                "icon": "Clock",
+                "title": "Managed Onboarding",
+                "description": "We handle equipment, compliance, and initial training integration to minimize friction and speed up time-to-value."
+            }
+        ]
+    },
+    "statistics": {
+        "title": "Why Choose",
+        "titleHighlight": "Caliber?",
+        "subtitle": "We combine world-class talent with strategic cost advantages to deliver unparalleled value for your business.",
+        "stats": [
+            {
+                "icon": "DollarSign",
+                "value": 27,
+                "suffix": "B",
+                "prefix": "$",
+                "label": "Industry Value",
+                "description": "The Philippines outsourcing industry revenue reached $27 billion USD in 2023.",
+                "source": "(Source: Statista)"
+            },
+            {
+                "icon": "Shield",
+                "value": 65,
+                "suffix": "%",
+                "prefix": "",
+                "label": "Quality Focus",
+                "description": "We directly address the quality issues cited by 65% of businesses in remote outsourcing.",
+                "source": "(Source: Harvard Business Review)"
+            },
+            {
+                "icon": "TrendingUp",
+                "value": 80,
+                "suffix": "%",
+                "prefix": "",
+                "label": "Cost Savings",
+                "description": "Businesses can achieve up to 80% cost savings by using our micro call center solutions.",
+                "source": "(Source: Deloitte)"
+            }
+        ],
+        "approaches": [
+            {
+                "title": "Super Saver Overhead",
+                "description": "Maximize your budget with our strategic location and efficient operations.",
+                "points": [
+                    "Up to 80% savings on labor costs",
+                    "Lower cost of living location benefit",
+                    "Reduced staff turnover rates"
+                ]
+            },
+            {
+                "title": "Focused Quality Service",
+                "description": "Bridge skill gaps and optimize internal processes with dedicated staff.",
+                "points": [
+                    "Access global talent pools",
+                    "Boost brand reputation",
+                    "Redirect on-shore resources to innovation"
+                ]
+            },
+            {
+                "title": "Scale Faster",
+                "description": "Tailor offshore operations to quickly meet market demand.",
+                "points": [
+                    "Rapidly scale team size",
+                    "Access specialized talent",
+                    "Zero additional overhead expenses"
+                ]
+            }
+        ]
+    },
+    "services": {
+        "title": "Outsourcing Solutions",
+        "titleHighlight": "Built for Business",
+        "subtitle": "From specialized technical roles to essential operational support, we build the team you need to succeed.",
+        "items": [
+            {
+                "icon": "Headphones",
+                "title": "Customer Service",
+                "description": "Reliable support agents to handle inquiries, resolve issues, and maintain customer satisfaction across channels.",
+                "highlight": true
+            },
+            {
+                "icon": "Database",
+                "title": "Data Entry & Admin Support",
+                "description": "Accurate data management, document processing, and administrative tasks to keep your operations running smoothly.",
+                "highlight": false
+            },
+            {
+                "icon": "Calculator",
+                "title": "Accounting & Bookkeeping",
+                "description": "Qualified professionals to manage transactions, financial reporting, and ensure compliance.",
+                "highlight": false
+            },
+            {
+                "icon": "Users",
+                "title": "Sales Support",
+                "description": "Skilled agents for lead generation, follow-ups, and pipeline management to drive revenue.",
+                "highlight": false
+            },
+            {
+                "icon": "Wrench",
+                "title": "Technical Support",
+                "description": "IT specialists to troubleshoot issues and provide technical assistance to your customers.",
+                "highlight": false
+            },
+            {
+                "icon": "Code2",
+                "title": "Web Development",
+                "description": "Experienced developers to build and maintain modern web applications using current technologies.",
+                "highlight": false
+            }
+        ]
+    },
+    "howItWorks": {
+        "title": "Getting Started",
+        "titleHighlight": "Is Simple",
+        "subtitle": "A straightforward process designed to get you the talent you need, fast.",
+        "steps": [
+            {
+                "icon": "MessageSquare",
+                "number": "01",
+                "title": "Talent Sourcing Strategy",
+                "description": "We collaborate to define the exact skill profile, cultural fit, and operational requirements for the role."
+            },
+            {
+                "icon": "Users",
+                "number": "02",
+                "title": "Multi-Stage Screening",
+                "description": "Candidates undergo rigorous skills assessments, behavioral interviews, and cultural alignment evaluations."
+            },
+            {
+                "icon": "Handshake",
+                "number": "03",
+                "title": "Client Matching & Approval",
+                "description": "Review a curated shortlist of top-tier professionals. You hold final approval on who joins your team."
+            },
+            {
+                "icon": "Rocket",
+                "number": "04",
+                "title": "Managed Onboarding & Monitoring",
+                "description": "We handle integration logistics and provide ongoing performance oversight to ensure long-term success."
+            }
+        ]
+    },
+    "culture": {
+        "title": "Our",
+        "titleHighlight": "Culture",
+        "subtitle": "Experience what makes Caliber Business Resource a great place to work",
+        "videoUrl": "/video/company_culture.mp4",
+        "videoPoster": "/images/our-story-main.png",
+        "cards": [
+            {
+                "icon": "UsersGroup",
+                "title": "Team Collaboration",
+                "description": "We believe in the power of working together. Our collaborative environment fosters innovation and shared success."
+            },
+            {
+                "icon": "Star",
+                "title": "Growth & Development",
+                "description": "Continuous learning is at our core. We invest in our people's professional development and career advancement."
+            },
+            {
+                "icon": "Smile",
+                "title": "Work-Life Balance",
+                "description": "We understand the importance of balance. Our flexible work arrangements support both professional and personal well-being."
+            }
+        ],
+        "quoteText": "Caliber Business Resource is not just a company—it's a testimony of faith in action, where excellence and purpose go hand in hand.",
+        "quoteAuthor": "Chrissa B. Ranis, Founder & CEO"
+    },
+    "jobListings": {
+        "title": "Join Our",
+        "titleHighlight": "Talent Network",
+        "description": "We are constantly seeking highly skilled professionals in customer support, administration, accounting, scaling operations, and software development to join our managed staffing pool.",
+        "features": [
+            "Long-term remote placements with premium international clients.",
+            "Structured vetting and professional growth opportunities."
+        ],
+        "ctaLabel": "Submit Your Resume",
+        "ctaLink": "https://forms.gle/2w6CKLNdJGGdwHiz6",
+        "ctaSubtext": "Please include your updated CV and a brief introduction of your core competencies.",
+        "fraudNotice": "Caliber Business Resource does not charge applicants any recruitment fees. Please report suspicious communications."
+    },
+    "about": {
+        "storyTitle": "Our",
+        "storyTitleHighlight": "Story",
+        "storyParagraphs": [
+            "At Caliber Business Resource Incorporated, we are dedicated to transforming the way businesses approach remote staffing and operational support. CBR was founded not only from a passion for business innovation, but also from a God-given desire to be a blessing to our people and our nation.",
+            "We specialize in building high-performing, customized teams through our micro call center offices located in both the vibrant cities and the quieter, yet equally talented, heartlands of the Philippine Islands.",
+            "We live by the name CALIBER—not just in the level of our skill, but in the integrity of our character. Everything we do is done with excellence, with a servant heart, and with the understanding that this work is a stewardship entrusted to us."
+        ],
+        "storyVideoUrl": "/video/video.mp4",
+        "ceoQuote": "We believe that when we put God first, everything else follows.",
+        "ceoMessage": "Caliber Business Resource was born out of a deeper purpose. What began as a business idea quickly became a mission: to give back to our fellow Filipinos and, above all, to glorify Him through our work.",
+        "ceoName": "Chrissa B. Ranis",
+        "ceoTitle": "Founder & CEO",
+        "ceoImage": "/images/profile-fit.png",
+        "visionText": "To be a game-changer and leader in micro call center solutions, offering the simplest business solutions and robust manpower resources tailored for thriving business enterprises.",
+        "missionText": "We aim to provide unparalleled micro call center and backend solutions, enabling small to medium-sized businesses to achieve strategic clarity and expand their market presence while we manage the operational intricacies.",
+        "teamTitle": "Meet Our",
+        "teamTitleHighlight": "Team",
+        "teamSubtitle": "Our leadership team brings decades of combined experience in BPO, operational excellence, and strategic management.",
+        "teamMembers": [
+            {
+                "name": "Chrissa B. Ranis",
+                "role": "Founder & Chairman of the Board",
+                "image": "/images/Chrissa.png"
+            },
+            {
+                "name": "Atty. Euchrissa Theresa Ladrera",
+                "role": "Corporate Secretary",
+                "image": "/images/Euchrissa.png"
+            },
+            {
+                "name": "Bertch Ian Ranis",
+                "role": "Director for Marketing",
+                "image": "/images/Bertch.png"
+            },
+            {
+                "name": "Laureen Lejarde",
+                "role": "Director for Operations",
+                "image": "/images/Laureen.png"
+            },
+            {
+                "name": "Joanne Apat",
+                "role": "Business Development Partner",
+                "image": "/images/Joanne.png"
+            }
+        ],
+        "ethos": [
+            {
+                "letter": "R",
+                "text": "RISE by lifting our People & Clients"
+            },
+            {
+                "letter": "I",
+                "text": "IMPACT through Strategic Execution"
+            },
+            {
+                "letter": "S",
+                "text": "SUSTAINABILITY through Initiative & Reliability"
+            },
+            {
+                "letter": "E",
+                "text": "EMPOWERMENT by Engagement"
+            }
+        ],
+        "whyJoinTitle": "Why Join Caliber?",
+        "whyJoinSubtitle": "We believe our success is driven by our people. We're committed to creating an environment where talented individuals can thrive, grow their careers, and make a meaningful impact.",
+        "values": [
+            {
+                "icon": "Building2",
+                "title": "Professional Excellence",
+                "description": "We maintain the highest standards in everything we do, delivering exceptional service to our clients and creating a workplace where excellence thrives."
+            },
+            {
+                "icon": "Target",
+                "title": "Growth & Development",
+                "description": "We invest in our people through continuous training, mentorship programs, and clear career progression paths."
+            },
+            {
+                "icon": "Heart",
+                "title": "Collaborative Culture",
+                "description": "We foster a supportive environment where teamwork, respect, and open communication are valued by everyone."
+            }
+        ]
+    },
+    "differentiation": {
+        "title": "What Sets",
+        "titleHighlight": "Caliber Apart",
+        "subtitle": "We operate as your premium managed staffing partner, prioritizing quality, retention, and seamless integration.",
+        "items": [
+            {
+                "icon": "ShieldCheck",
+                "title": "Structured Multi-Stage Vetting",
+                "description": "We don't just forward resumes. Every candidate undergoes rigorous technical, behavioral, and cultural alignment screening before reaching your desk."
+            },
+            {
+                "icon": "Users",
+                "title": "Dedicated Account Managers",
+                "description": "Your assigned Account Manager ensures smooth onboarding, handles performance reviews, and acts as your single point of contact for all HR needs."
+            },
+            {
+                "icon": "Clock",
+                "title": "Ongoing Performance Oversight",
+                "description": "Our involvement doesn't end at placement. We provide continuous support and infrastructure to ensure long-term retention and productivity."
+            },
+            {
+                "icon": "CheckCircle2",
+                "title": "Long-Term Partnership Focus",
+                "description": "We build dedicated remote teams designed to scale with your business over years, not just fill short-term gaps."
+            }
+        ]
+    },
+    "googleMaps": {
+        "title": "Visit Our Office",
+        "subtitle": "Located in the heart of Tagbilaran City, Bohol",
+        "embedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3943.876!2d123.869761!3d9.631805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zOcKwMzcnNTQuNSJOIDEyM8KwNTInMTEuMSJF!5e0!3m2!1sen!2sph!4v1600000000000!5m2!1sen!2sph",
+        "address": "Ruberen Complex, Venancio P. Inting Avenue, Tagbilaran City, Bohol"
+    },
+    "footer": {
+        "tagline": "Empowering businesses with world-class remote talent. Your growth is our mission.",
+        "address": "Ruberen Complex, Tagbilaran City, Bohol",
+        "phone": "+1 (405) 926-8324",
+        "phoneRaw": "+14059268324",
+        "emailUser": "info",
+        "emailDomain": "caliberbusinessresource.com",
+        "fraudNotice": "Caliber Business Resource does not charge applicants any recruitment fees. Please report suspicious communications to"
+    }
+}
