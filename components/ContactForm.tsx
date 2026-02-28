@@ -459,7 +459,7 @@ export default function ContactForm() {
                 </div>
               </a>
               <a
-                href="https://www.linkedin.com/in/caliber-business-resource-72905a31b"
+                href="https://www.linkedin.com/company/caliber-business-resource-bpo-inc/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group block p-4 rounded-2xl bg-blue-700/10 border border-blue-600/30 hover:border-blue-600 transition-all duration-500 hover:scale-[1.02]"
