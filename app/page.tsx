@@ -14,19 +14,20 @@ import ScrollToTop from "@/components/ScrollToTop";
 import FloatingContact from "@/components/FloatingContact";
 import CultureSection from "@/components/CultureSection";
 import GoogleMapsSection from "@/components/GoogleMapsSection";
+import FAQ from "@/components/FAQ";
 import { getHomepageData } from "@/lib/getHomepageData";
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = getHomepageData();
   return {
-    title: data.seo?.title || "Caliber Business Resource | Premium Remote Staffing",
-    description: data.seo?.description || "Scale your business with premium remote staffing and micro call center solutions from the Philippines.",
+    title: data.seo?.title || "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
+    description: data.seo?.description || "Hire dedicated remote teams from the Philippines. Fully managed BPO staffing for customer support, data entry, accounting, and tech support.",
     openGraph: {
-      title: data.seo?.title || "Caliber Business Resource | Premium Remote Staffing",
+      title: data.seo?.title || "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
       description: data.seo?.description,
     },
     twitter: {
-      title: data.seo?.title || "Caliber Business Resource | Premium Remote Staffing",
+      title: data.seo?.title || "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
       description: data.seo?.description,
     }
   };
@@ -41,10 +42,10 @@ export default function Home() {
     "@graph": [
       {
         "@type": "Organization",
-        "@id": "https://caliber-business.vercel.app/#organization",
+        "@id": "https://www.caliberbusinessresource.com/#organization",
         "name": "Caliber Business Resource",
-        "url": "https://caliber-business.vercel.app",
-        "logo": "https://caliber-business.vercel.app/images/logo.jpg",
+        "url": "https://www.caliberbusinessresource.com",
+        "logo": "https://www.caliberbusinessresource.com/images/logo.jpg",
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": data.footer.phoneRaw,
@@ -56,9 +57,9 @@ export default function Home() {
       },
       {
         "@type": "LocalBusiness",
-        "@id": "https://caliber-business.vercel.app/#localbusiness",
+        "@id": "https://www.caliberbusinessresource.com/#localbusiness",
         "name": "Caliber Business Resource",
-        "image": "https://caliber-business.vercel.app/images/logo.jpg",
+        "image": "https://www.caliberbusinessresource.com/images/logo.jpg",
         "telephone": data.footer.phoneRaw,
         "email": `${data.footer.emailUser}@${data.footer.emailDomain}`,
         "address": {
@@ -68,6 +69,17 @@ export default function Home() {
           "addressRegion": "Bohol",
           "addressCountry": "PH"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": data.faq?.items?.map((item: { question: string; answer: string }) => ({
+          "@type": "Question",
+          "name": item.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.answer
+          }
+        })) || []
       }
     ]
   };
@@ -95,6 +107,7 @@ export default function Home() {
       <About data={data.about} />
       <GoogleMapsSection data={data.googleMaps} />
       <Differentiation data={data.differentiation} />
+      {data.faq && <FAQ data={data.faq} />}
       <ContactForm />
 
       <Footer data={data.footer} />

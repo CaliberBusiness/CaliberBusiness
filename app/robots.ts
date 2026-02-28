@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {
-    const baseUrl = 'https://caliber-business.vercel.app';
+    const baseUrl = 'https://www.caliberbusinessresource.com';
 
     return {
         rules: {

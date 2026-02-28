@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://caliber-business.vercel.app';
+    const baseUrl = 'https://www.caliberbusinessresource.com';
 
     return [
         {

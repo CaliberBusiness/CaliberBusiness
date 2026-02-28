@@ -1,7 +1,45 @@
 {
     "seo": {
-        "title": "Caliber Business Resource | Premium Remote Staffing & BPO",
-        "description": "Scale your operations with premium remote staffing and micro call center solutions from the Philippines. Dedicated offshore teams for customer service, tech support, and more."
+        "title": "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
+        "description": "Hire dedicated remote teams from the Philippines. Caliber Business Resource offers fully managed BPO staffing for customer support, data entry, accounting, and tech support. Get a free quote."
+    },
+    "faq": {
+        "title": "Frequently Asked",
+        "titleHighlight": "Questions",
+        "items": [
+            {
+                "question": "What services does Caliber Business Resource offer?",
+                "answer": "We provide fully managed remote staffing solutions from the Philippines, including customer service, data entry and admin support, accounting and bookkeeping, sales support, technical support, and web development."
+            },
+            {
+                "question": "How does your pricing work?",
+                "answer": "Our pricing is based on the role, experience level, and number of staff you require. We offer competitive rates with up to 80% cost savings compared to hiring locally. Contact us for a customized quote tailored to your specific needs."
+            },
+            {
+                "question": "How do you ensure the quality of your remote staff?",
+                "answer": "Every candidate undergoes our structured multi-stage vetting process, which includes technical skills assessments, behavioral interviews, and cultural alignment evaluations. Only top-tier professionals who meet our high standards make it to your shortlist."
+            },
+            {
+                "question": "How quickly can I get started?",
+                "answer": "Our typical onboarding timeline is 2-4 weeks from initial consultation to having your dedicated team member start. This includes talent sourcing, multi-stage screening, client matching, and managed onboarding."
+            },
+            {
+                "question": "What time zones do your remote staff work in?",
+                "answer": "Our teams are flexible and can work in your preferred time zone. Whether you need staff aligned with US Eastern, Central, Pacific, or any other time zone, we accommodate your schedule for seamless collaboration."
+            },
+            {
+                "question": "Do I have control over who joins my team?",
+                "answer": "Absolutely. You hold final approval on every hire. We present a curated shortlist of pre-vetted candidates, and you choose who best fits your team culture and operational requirements."
+            },
+            {
+                "question": "What happens if a team member doesn't work out?",
+                "answer": "We provide ongoing performance oversight and support. If a placement isn't meeting expectations, your dedicated Account Manager will work with you to resolve issues or find a replacement at no additional cost."
+            },
+            {
+                "question": "Is my data secure when working with offshore staff?",
+                "answer": "Data security is a top priority. We implement strict confidentiality agreements, secure infrastructure, and compliance protocols. Our office facility ensures a controlled work environment with monitored access."
+            }
+        ]
     },
     "hero": {
         "badge": "Trusted Outsourcing Partner",

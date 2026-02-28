@@ -9,26 +9,26 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://caliber-business.vercel.app'),
+  metadataBase: new URL('https://www.caliberbusinessresource.com'),
   title: {
-    default: "Caliber Business Resource | Premium Remote Staffing",
+    default: "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
     template: "%s | Caliber Business Resource"
   },
-  description: "Scale your business with premium remote staffing and micro call center solutions from the Philippines. Access top-tier talent for customer service, tech support, and back-office operations.",
-  keywords: ["Caliber Business Resource", "BPO", "remote staffing", "offshore team", "Philippines outsourcing", "micro call center", "virtual assistants", "customer support outsourcing"],
+  description: "Hire dedicated remote teams from the Philippines. Caliber Business Resource offers fully managed BPO staffing for customer support, data entry, accounting, and tech support. Get a free quote.",
+  keywords: ["Philippines outsourcing company", "remote staffing Philippines", "BPO services Philippines", "offshore team Philippines", "Caliber Business Resource", "micro call center", "outsource customer service Philippines", "hire virtual assistants Philippines"],
   authors: [{ name: "Caliber Business Resource" }],
   openGraph: {
-    title: "Caliber Business Resource | Premium Remote Staffing",
-    description: "Scale your business with premium remote staffing and micro call center solutions from the Philippines.",
-    url: 'https://caliber-business.vercel.app',
+    title: "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
+    description: "Hire dedicated remote teams from the Philippines. Caliber Business Resource offers fully managed BPO staffing for customer support, data entry, accounting, and tech support.",
+    url: 'https://www.caliberbusinessresource.com',
     siteName: 'Caliber Business Resource',
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Caliber Business Resource | Premium Remote Staffing",
-    description: "Scale your business with premium remote staffing and micro call center solutions from the Philippines.",
+    title: "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
+    description: "Hire dedicated remote teams from the Philippines. Fully managed BPO staffing for customer support, data entry, accounting, and tech support.",
   },
   robots: {
     index: true,
