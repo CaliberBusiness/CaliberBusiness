@@ -2,12 +2,18 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
+import { Metadata } from "next";
 
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingContact from "@/components/FloatingContact";
 import { getHomepageData } from "@/lib/getHomepageData";
+
+export const metadata: Metadata = {
+    title: "Terms of Use",
+    description: "Terms of Use for Caliber Business Resource. Read our terms and conditions for using our services.",
+};
 
 // This is now a Server Component to read from the filesystem directly
 export default async function TermsOfUse() {

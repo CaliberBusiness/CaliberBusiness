@@ -9,24 +9,37 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Careers at Caliber Business Resource | Join Our Team",
-  description: "Explore exciting career opportunities at Caliber Business Resource. Join our team of professionals in Bohol, Philippines. Open roles in customer service, marketing, tech support, and more.",
-  keywords: ["Caliber Business Resource", "careers", "jobs", "Bohol", "Philippines", "customer service", "BPO jobs", "tech support", "marketing"],
+  metadataBase: new URL('https://caliber-business.vercel.app'),
+  title: {
+    default: "Caliber Business Resource | Premium Remote Staffing",
+    template: "%s | Caliber Business Resource"
+  },
+  description: "Scale your business with premium remote staffing and micro call center solutions from the Philippines. Access top-tier talent for customer service, tech support, and back-office operations.",
+  keywords: ["Caliber Business Resource", "BPO", "remote staffing", "offshore team", "Philippines outsourcing", "micro call center", "virtual assistants", "customer support outsourcing"],
   authors: [{ name: "Caliber Business Resource" }],
   openGraph: {
-    title: "Careers at Caliber Business Resource",
-    description: "Let's build your back office and team NOW. Join our growing team in Bohol, Philippines.",
+    title: "Caliber Business Resource | Premium Remote Staffing",
+    description: "Scale your business with premium remote staffing and micro call center solutions from the Philippines.",
+    url: 'https://caliber-business.vercel.app',
+    siteName: 'Caliber Business Resource',
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Careers at Caliber Business Resource",
-    description: "Explore exciting career opportunities in Bohol, Philippines.",
+    title: "Caliber Business Resource | Premium Remote Staffing",
+    description: "Scale your business with premium remote staffing and micro call center solutions from the Philippines.",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 };
 

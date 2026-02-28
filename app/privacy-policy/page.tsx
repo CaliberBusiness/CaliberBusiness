@@ -2,12 +2,18 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import ReactMarkdown from "react-markdown";
+import { Metadata } from "next";
 
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingContact from "@/components/FloatingContact";
 import { getHomepageData } from "@/lib/getHomepageData";
+
+export const metadata: Metadata = {
+    title: "Privacy Policy",
+    description: "Privacy Policy for Caliber Business Resource. Understand how we collect, use, and protect your data.",
+};
 
 export default async function PrivacyPolicy() {
     const filePath = path.join(process.cwd(), "data/content/policies/privacy-policy.md");
