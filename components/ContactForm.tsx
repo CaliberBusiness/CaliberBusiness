@@ -293,8 +293,19 @@ export default function ContactForm() {
         phoneNumber: formData.phoneNumber.trim(),
       };
 
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      console.log('Sanitized submission:', sanitizedData);
+      const response = await fetch("https://formspree.io/f/xpqjnnwv", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(sanitizedData),
+      });
+
+      if (!response.ok) {
+        throw new Error("Form submission failed");
+      }
+
       setSubmitStatus("success");
       setCooldownRemaining(0);
       setFormData({
