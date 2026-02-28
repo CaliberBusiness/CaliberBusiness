@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import ObfuscatedEmail from "./ObfuscatedEmail";
 
 // --- Security: Sanitization Utilities ---
@@ -18,7 +18,7 @@ const MAX_LENGTHS: Record<string, number> = {
   message: 1000,
 };
 
-const SUBMISSION_COOLDOWN_MS = 15000; // 15 second cooldown between submissions
+const SUBMISSION_COOLDOWN_MS = 300000; // 5 minute cooldown between submissions
 
 const companySizes = [
   "1-10 employees",
@@ -189,8 +189,30 @@ export default function ContactForm() {
 
   // --- Phase 2: Anti-Spam ---
   const [honeypot, setHoneypot] = useState(""); // Bot trap - should remain empty
-  const lastSubmitTime = useRef<number>(0);
   const [cooldownRemaining, setCooldownRemaining] = useState(0);
+
+  // Check localStorage on mount for existing cooldown
+  useEffect(() => {
+    const lastSubmitStr = localStorage.getItem('caliber_contact_last_submit');
+    if (lastSubmitStr) {
+      const lastSubmit = parseInt(lastSubmitStr, 10);
+      const elapsed = Date.now() - lastSubmit;
+
+      if (elapsed < SUBMISSION_COOLDOWN_MS) {
+        setCooldownRemaining(Math.ceil((SUBMISSION_COOLDOWN_MS - elapsed) / 1000));
+      }
+    }
+  }, []);
+
+  // Update cooldown timer every second if active
+  useEffect(() => {
+    if (cooldownRemaining > 0) {
+      const timer = setInterval(() => {
+        setCooldownRemaining(prev => Math.max(0, prev - 1));
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [cooldownRemaining]);
 
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {};
@@ -265,12 +287,8 @@ export default function ContactForm() {
       return;
     }
 
-    // Phase 2: Cooldown check
-    const now = Date.now();
-    const elapsed = now - lastSubmitTime.current;
-    if (elapsed < SUBMISSION_COOLDOWN_MS) {
-      const remaining = Math.ceil((SUBMISSION_COOLDOWN_MS - elapsed) / 1000);
-      setCooldownRemaining(remaining);
+    // Phase 2: Persistent Cooldown check
+    if (cooldownRemaining > 0) {
       return;
     }
 
@@ -279,7 +297,9 @@ export default function ContactForm() {
     }
 
     setIsSubmitting(true);
-    lastSubmitTime.current = Date.now();
+
+    // Save submission time to localStorage
+    localStorage.setItem('caliber_contact_last_submit', Date.now().toString());
 
     try {
       // Sanitize all text inputs before submission
@@ -716,7 +736,7 @@ export default function ContactForm() {
 
                   {cooldownRemaining > 0 && (
                     <p className="text-yellow-400 text-sm text-center">
-                      Please wait {cooldownRemaining} seconds before submitting again.
+                      Please wait {Math.floor(cooldownRemaining / 60)}m {cooldownRemaining % 60}s before submitting again.
                     </p>
                   )}
 
