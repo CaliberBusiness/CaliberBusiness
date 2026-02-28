@@ -25,8 +25,8 @@ export default function Footer({ data }: FooterProps) {
 
           {/* Brand Column */}
           <div>
-            <div className="flex items-center gap-3 mb-6">
-              <div className="relative w-12 h-12 overflow-hidden rounded-xl border border-white/10">
+            <Link href="/#home" className="flex items-center gap-3 mb-6 group cursor-pointer">
+              <div className="relative w-12 h-12 overflow-hidden rounded-xl border border-white/10 group-hover:scale-105 transition-transform duration-300">
                 <img
                   src={getImagePath('/images/logo.jpg')}
                   alt="Caliber Business Resource Logo"
@@ -34,10 +34,10 @@ export default function Footer({ data }: FooterProps) {
                 />
               </div>
               <div>
-                <h3 className="font-bold text-lg text-white">Caliber</h3>
+                <h3 className="font-bold text-lg text-white group-hover:text-primary transition-colors">Caliber</h3>
                 <p className="text-primary text-xs uppercase tracking-wider">Business Resource</p>
               </div>
-            </div>
+            </Link>
             <p className="body-text text-sm">
               {data.tagline}
             </p>
