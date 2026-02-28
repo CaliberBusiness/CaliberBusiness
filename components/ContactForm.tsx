@@ -452,23 +452,6 @@ export default function ContactForm() {
               </div>
             </div>
 
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-              <h3 className="text-xl font-bold text-white mb-4">Office Hours</h3>
-              <div className="space-y-2 text-gray-300">
-                <p className="flex justify-between">
-                  <span>Monday - Friday</span>
-                  <span className="text-primary">8:00 AM - 6:00 PM</span>
-                </p>
-                <p className="flex justify-between">
-                  <span>Saturday</span>
-                  <span className="text-primary">9:00 AM - 2:00 PM</span>
-                </p>
-                <p className="flex justify-between">
-                  <span>Sunday</span>
-                  <span className="text-gray-500">Closed</span>
-                </p>
-              </div>
-            </div>
 
             <div className="space-y-4">
               <a
