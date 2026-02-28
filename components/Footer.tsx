@@ -47,9 +47,9 @@ export default function Footer({ data }: FooterProps) {
           <div>
             <h4 className="heading-3 mb-6">Company</h4>
             <ul className="space-y-4 text-sm text-muted-foreground">
-              <li><a href="#about" className="hover:text-primary transition-colors">About Us</a></li>
-              <li><a href="#services" className="hover:text-primary transition-colors">Our Services</a></li>
-              <li><a href="#open-roles" className="hover:text-primary transition-colors">Careers</a></li>
+              <li><Link href="/#about" className="hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link href="/#services" className="hover:text-primary transition-colors">Our Services</Link></li>
+              <li><Link href="/#open-roles" className="hover:text-primary transition-colors">Careers</Link></li>
             </ul>
           </div>
 
