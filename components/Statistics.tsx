@@ -1,12 +1,7 @@
 "use client";
 
-import { TrendingUp, Shield, DollarSign, CheckCircle2 } from 'lucide-react';
-import { useScrollAnimation } from '@/lib/useScrollAnimation';
+import { CheckCircle2 } from 'lucide-react';
 import { useScrollCountUp } from '@/lib/useCountUp';
-
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  TrendingUp, Shield, DollarSign
-};
 
 interface StatItem {
   icon: string;
@@ -29,41 +24,40 @@ interface StatisticsProps {
 }
 
 export default function Statistics({ data }: StatisticsProps) {
-  const { elementRef, isVisible } = useScrollAnimation();
-
   return (
-    <section className="py-24 bg-background relative overflow-hidden">
-      <div className="absolute top-1/2 left-0 w-full h-[500px] bg-primary/5 -skew-y-6 pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16 sm:mb-20 animate-slide-up px-4 sm:px-0">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 sm:mb-6">
-            {data.title} <span className="text-primary">{data.titleHighlight}</span>
+    <section className="py-20 sm:py-28 bg-gradient-to-b from-[#d3d3d3]/60 via-[#d3d3d3]/30 to-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16 px-4 sm:px-0">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#4a4a4a] mb-3">
+            {data.title} <span className="text-[#4a4a4a]">{data.titleHighlight}</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-400 max-w-3xl mx-auto">
+          <div className="w-10 h-1 bg-[#7fffd4] mx-auto rounded-full mb-5" />
+          <p className="text-base sm:text-lg text-[#4a4a4a]/70 max-w-3xl mx-auto">
             {data.subtitle}
           </p>
         </div>
 
-        <div ref={elementRef} className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 mb-16 sm:mb-24">
-          {data.stats.map((stat, index) => (
-            <AnimatedStat key={stat.label} stat={stat} index={index} isParentVisible={isVisible} />
+        {/* Open number strip — no boxes, dividers only */}
+        <div className="flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-[#4a4a4a]/20 mb-16 sm:mb-20 bg-white/70 rounded-2xl overflow-hidden shadow-sm">
+          {data.stats.map((stat) => (
+            <AnimatedStat key={stat.label} stat={stat} />
           ))}
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {data.approaches.map((approach) => (
+        {/* Approaches — grid with dividers */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-0 divide-y sm:divide-y-0 sm:divide-x divide-[#4a4a4a]/15">
+          {data.approaches.map((approach, idx) => (
             <div
               key={approach.title}
-              className="bg-secondary/30 backdrop-blur-sm border border-white/5 rounded-2xl p-6 sm:p-8 hover:border-primary/30 transition-colors"
+              className={`px-6 sm:px-8 py-8 ${idx > 0 && idx < 3 ? 'sm:border-t-0' : ''} ${idx >= 3 ? 'border-t border-[#4a4a4a]/15' : ''}`}
             >
-              <h3 className="text-lg sm:text-xl font-bold text-white mb-3">{approach.title}</h3>
-              <p className="text-gray-400 text-sm mb-4 sm:mb-6">{approach.description}</p>
+              <h3 className="text-lg sm:text-xl font-bold text-[#4a4a4a] mb-3">{approach.title}</h3>
+              <p className="text-[#4a4a4a]/70 text-sm mb-5">{approach.description}</p>
 
               <ul className="space-y-2 sm:space-y-3">
-                {approach.points.map((point, idx) => (
-                  <li key={idx} className="flex items-start gap-2 sm:gap-3 text-sm text-gray-300">
-                    <CheckCircle2 className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                {approach.points.map((point, pidx) => (
+                  <li key={pidx} className="flex items-start gap-2 sm:gap-3 text-sm text-[#4a4a4a]/80">
+                    <CheckCircle2 className="w-4 h-4 text-[#0d9e70] mt-0.5 shrink-0" />
                     <span>{point}</span>
                   </li>
                 ))}
@@ -76,7 +70,7 @@ export default function Statistics({ data }: StatisticsProps) {
   );
 }
 
-function AnimatedStat({ stat, index, isParentVisible }: { stat: StatItem; index: number; isParentVisible: boolean }) {
+function AnimatedStat({ stat }: { stat: StatItem }) {
   const { elementRef, displayValue } = useScrollCountUp({
     end: stat.value,
     suffix: stat.suffix || '',
@@ -85,25 +79,17 @@ function AnimatedStat({ stat, index, isParentVisible }: { stat: StatItem; index:
     threshold: 0.5
   });
 
-  const IconComponent = iconMap[stat.icon];
-
   return (
     <div
       ref={elementRef}
-      className={`group relative p-6 sm:p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 transition-all duration-300 hover:-translate-y-1 scroll-slide-up stagger-${index + 1} ${isParentVisible ? 'visible' : ''}`}
+      className="flex-1 px-6 sm:px-10 py-8 sm:py-10 text-center"
     >
-      <div className="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-        {IconComponent && <IconComponent className="w-16 sm:w-24 h-16 sm:h-24 text-primary" />}
+      <div className="text-4xl sm:text-5xl md:text-6xl font-extrabold text-[#4a4a4a] mb-2">
+        {displayValue}
       </div>
-
-      <div className="relative z-10">
-        <div className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-2 group-hover:text-primary transition-colors">
-          {displayValue}
-        </div>
-        <div className="text-lg sm:text-xl font-semibold text-primary mb-3 sm:mb-4">{stat.label}</div>
-        <p className="text-gray-400 text-sm mb-2 leading-relaxed">{stat.description}</p>
-        {stat.source && <span className="text-xs text-gray-500 italic">{stat.source}</span>}
-      </div>
+      <div className="text-base sm:text-lg font-semibold text-[#0d9e70] mb-2">{stat.label}</div>
+      <p className="text-[#4a4a4a]/65 text-xs sm:text-sm leading-relaxed max-w-[200px] mx-auto">{stat.description}</p>
+      {stat.source && <span className="text-xs text-[#4a4a4a]/45 italic">{stat.source}</span>}
     </div>
   );
 }

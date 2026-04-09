@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(sed -i 's/ style={{ background: '\"'\"'linear-gradient\\(180deg, #fffef5 0%, #fffdd0 100%\\)'\"'\"' }}//g' components/About.tsx)",
+      "Bash(sed -i 's/ style={{ background: '\"'\"'linear-gradient\\(180deg, #fff 0%, #f8fffe 100%\\)'\"'\"' }}//g' components/Differentiation.tsx)",
+      "Bash(sed -i 's/ style={{ background: '\"'\"'linear-gradient\\(180deg, #fffef8 0%, #fff 100%\\)'\"'\"' }}//g' components/FAQ.tsx)",
+      "Bash(sed -i 's/ style={{ background: '\"'\"'linear-gradient\\(180deg, #f8fffc 0%, #fffdd0 60%, #fff 100%\\)'\"'\"' }}//g' components/CultureSection.tsx)",
+      "Bash(sed -i 's/ style={{ background: '\"'\"'linear-gradient\\(135deg, #f4fef9 0%, #fffdd0 50%, #fafff8 100%\\)'\"'\"' }}//g' components/HowItWorks.tsx)",
+      "Bash(npm run:*)",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('tailwind:', p.dependencies?.tailwindcss || p.devDependencies?.tailwindcss\\); console.log\\('next:', p.dependencies?.next\\)\")"
+    ]
+  }
+}

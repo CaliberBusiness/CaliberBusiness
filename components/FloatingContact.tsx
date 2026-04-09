@@ -55,7 +55,7 @@ export default function FloatingContact() {
       >
         <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
           {/* Header */}
-          <div className="bg-primary p-4 text-white">
+          <div className="bg-[#4a4a4a] p-4 text-white">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -125,14 +125,14 @@ export default function FloatingContact() {
 
           <button
             onClick={handleToggle}
-            className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 ${showChatbot ? 'bg-gray-700 rotate-45' : 'bg-primary hover:bg-primary/90'}`}
+            className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 ${showChatbot ? 'bg-[#4a4a4a] rotate-45' : 'bg-[#f6b130] hover:bg-[#d4940a]'}`}
             aria-label={showChatbot ? 'Close chatbot' : 'Open chatbot'}
           >
             {showChatbot ? (
               <X className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
             ) : (
               <div className="flex items-center justify-center">
-                <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-background" />
+                <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-[#1a1a1a]" />
               </div>
             )}
           </button>

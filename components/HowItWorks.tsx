@@ -1,7 +1,6 @@
 "use client";
 
 import { MessageSquare, Users, Handshake, Rocket } from 'lucide-react';
-import { useScrollAnimation } from '@/lib/useScrollAnimation';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   MessageSquare, Users, Handshake, Rocket
@@ -17,51 +16,66 @@ interface HowItWorksProps {
 }
 
 export default function HowItWorks({ data }: HowItWorksProps) {
-  const { elementRef, isVisible } = useScrollAnimation();
-
   return (
-    <section className="py-24 bg-secondary/20 relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-1/3 h-1/3 bg-primary/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section className="py-20 sm:py-28 bg-gradient-to-br from-white via-[#fffdd0]/60 to-[#7fffd4]/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            {data.title} <span className="text-primary">{data.titleHighlight}</span>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#4a4a4a] mb-3">
+            {data.title} <span className="text-[#4a4a4a]">{data.titleHighlight}</span>
           </h2>
-          <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
+          <div className="w-10 h-1 bg-[#7fffd4] mx-auto rounded-full mb-5" />
+          <p className="text-base sm:text-lg text-[#4a4a4a]/70 max-w-2xl mx-auto">
             {data.subtitle}
           </p>
         </div>
 
-        <div ref={elementRef} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
-          {data.steps.map((step, index) => {
-            const IconComponent = iconMap[step.icon];
-            return (
-              <div
-                key={step.title}
-                className={`relative scroll-slide-up stagger-${index + 1} ${isVisible ? 'visible' : ''}`}
-              >
-                <div className="bg-white/5 border border-white/10 rounded-2xl p-6 sm:p-8 h-full">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center">
-                      {IconComponent && <IconComponent className="w-6 h-6 text-primary" />}
+        {/* Desktop: connecting line layout */}
+        <div className="hidden lg:block relative">
+          {/* Horizontal connecting line */}
+          <div className="absolute top-8 left-[12.5%] right-[12.5%] h-px bg-[#4a4a4a]/15" />
+
+          <div className="grid lg:grid-cols-4 gap-8">
+            {data.steps.map((step, index) => {
+              const IconComponent = iconMap[step.icon];
+              return (
+                <div key={step.title} className="relative flex flex-col items-center text-center pt-0">
+                  {/* Circle on the line */}
+                  <div className="relative w-16 h-16 rounded-full bg-[#4a4a4a] flex items-center justify-center mb-6 shadow-md z-10">
+                    {IconComponent && <IconComponent className="w-7 h-7 text-[#7fffd4]" />}
+                    {/* Step number badge */}
+                    <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-[#7fffd4] flex items-center justify-center">
+                      <span className="text-xs font-bold text-[#4a4a4a]">{index + 1}</span>
                     </div>
-                    <span className="text-4xl font-bold text-primary/30">{step.number}</span>
                   </div>
 
-                  <h3 className="text-lg font-bold text-white mb-3">{step.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <h3 className="text-lg font-bold text-[#4a4a4a] mb-2">{step.title}</h3>
+                  <p className="text-[#4a4a4a]/65 text-sm leading-relaxed max-w-[200px]">
                     {step.description}
                   </p>
                 </div>
+              );
+            })}
+          </div>
+        </div>
 
-                {index < data.steps.length - 1 && (
-                  <div className="hidden lg:block absolute top-1/2 -right-4 transform -translate-y-1/2 z-10">
-                    <svg className="w-8 h-8 text-primary/30" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
+        {/* Mobile: vertical stack with dividers */}
+        <div className="lg:hidden space-y-0 divide-y divide-[#4a4a4a]/10">
+          {data.steps.map((step, index) => {
+            const IconComponent = iconMap[step.icon];
+            return (
+              <div key={step.title} className="flex items-start gap-5 py-7">
+                <div className="relative shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-[#4a4a4a] flex items-center justify-center shadow-sm">
+                    {IconComponent && <IconComponent className="w-6 h-6 text-[#7fffd4]" />}
                   </div>
-                )}
+                  <div className="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-[#7fffd4] flex items-center justify-center">
+                    <span className="text-[10px] font-bold text-[#4a4a4a]">{index + 1}</span>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-base font-bold text-[#4a4a4a] mb-1">{step.title}</h3>
+                  <p className="text-[#4a4a4a]/65 text-sm leading-relaxed">{step.description}</p>
+                </div>
               </div>
             );
           })}

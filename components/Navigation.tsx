@@ -26,7 +26,6 @@ export default function Navigation() {
     };
     window.addEventListener('scroll', handleScroll);
 
-    // Setup IntersectionObserver for scroll spy
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -35,19 +34,13 @@ export default function Navigation() {
           }
         });
       },
-      {
-        rootMargin: '-30% 0px -30% 0px' // Trigger when section crosses middle part of screen
-      }
+      { rootMargin: '-30% 0px -30% 0px' }
     );
 
-    // Observe all sections defined in navLinks plus open-roles
     const sectionsToObserve = [...navLinks.map((link) => link.href.substring(1)), 'open-roles'];
-
     sectionsToObserve.forEach((id) => {
       const element = document.getElementById(id);
-      if (element) {
-        observer.observe(element);
-      }
+      if (element) observer.observe(element);
     });
 
     return () => {
@@ -82,7 +75,6 @@ export default function Navigation() {
     setIsMobileMenuOpen(false);
 
     if (!isHomePage) {
-      // Navigate to the homepage with the hash attached, allowing Next to scroll.
       router.push(`/${href}`);
       return;
     }
@@ -90,7 +82,6 @@ export default function Navigation() {
     const element = document.querySelector(href);
     if (element) {
       let offsetPosition;
-
       if (href === '#open-roles') {
         const viewportHeight = window.innerHeight;
         const elementHeight = element.clientHeight;
@@ -101,18 +92,17 @@ export default function Navigation() {
         const elementPosition = element.getBoundingClientRect().top;
         offsetPosition = elementPosition + window.pageYOffset - headerOffset;
       }
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
     }
   };
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'py-3 bg-background/95 backdrop-blur-md shadow-lg border-b border-white/5' : 'py-4 md:py-6 bg-transparent'
-        }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled
+          ? 'py-3 bg-[#4a4a4a] shadow-lg'
+          : 'py-4 md:py-6 bg-white/95 backdrop-blur-sm border-b border-[#e0e0e0]'
+      }`}
     >
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
@@ -121,19 +111,19 @@ export default function Navigation() {
             onClick={(e) => handleNavClick(e, '#home')}
             className="flex items-center gap-2 sm:gap-3 group"
           >
-            <div className="relative w-10 h-10 sm:w-12 sm:h-12 overflow-hidden rounded-xl shadow-lg border border-white/10 group-hover:scale-105 transition-transform duration-300">
+            <div className="relative w-10 h-10 sm:w-12 sm:h-12 overflow-hidden rounded-xl shadow-lg border border-[#e0e0e0] group-hover:scale-105 transition-transform duration-300">
               <img
                 src={getImagePath('/images/logo.jpg')}
                 alt="Caliber Business Resource Logo"
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="flex flex-col">
-              <span className="font-bold text-base sm:text-lg leading-none text-white tracking-tight">
-                Caliber
+            <div className="flex flex-col justify-center">
+              <span className={`font-medium text-sm sm:text-base leading-none tracking-tight whitespace-nowrap transition-colors font-[family-name:var(--font-montserrat)] ${isScrolled ? 'text-white' : 'text-[#4a4a4a]'}`}>
+                Caliber Business Resource
               </span>
-              <span className="text-[10px] sm:text-xs text-primary font-medium tracking-wider uppercase">
-                Business Resource
+              <span className={`text-[9px] sm:text-[10px] font-semibold tracking-widest uppercase transition-colors font-[family-name:var(--font-montserrat)] ${isScrolled ? 'text-[#7fffd4]' : 'text-[#f6b130]'}`}>
+                BPO &amp; Managed Staffing
               </span>
             </div>
           </a>
@@ -147,20 +137,21 @@ export default function Navigation() {
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`text-sm font-medium transition-colors relative group ${isActive ? 'text-primary' : 'text-gray-300 hover:text-primary'}`}
+                  className={`text-sm font-medium transition-colors relative group ${
+                    isScrolled
+                      ? isActive ? 'text-[#7fffd4]' : 'text-white/80 hover:text-white'
+                      : isActive ? 'text-[#4a4a4a]' : 'text-[#6b6b6b] hover:text-[#4a4a4a]'
+                  }`}
                 >
                   {link.label}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#7fffd4] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
                 </a>
               );
             })}
             <a
               href="#open-roles"
               onClick={(e) => handleNavClick(e, '#open-roles')}
-              className={`px-5 lg:px-6 py-2 lg:py-2.5 rounded-lg text-sm font-bold transition-all duration-300 transform hover:-translate-y-0.5 whitespace-nowrap ${isHomePage && activeSection === 'open-roles'
-                ? 'bg-white text-primary shadow-[0_0_20px_-5px_rgba(255,255,255,0.4)]'
-                : 'bg-primary hover:bg-primary/90 text-background hover:shadow-[0_0_20px_-5px_rgba(255,193,7,0.5)]'
-                }`}
+              className="px-5 lg:px-6 py-2 lg:py-2.5 rounded-lg text-sm font-bold transition-all duration-300 transform hover:-translate-y-0.5 whitespace-nowrap bg-[#f6b130] hover:bg-[#d4940a] text-[#1a1a1a] hover:shadow-[0_0_20px_-5px_rgba(246,177,48,0.5)]"
             >
               View Jobs
             </a>
@@ -168,7 +159,7 @@ export default function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-white p-2 -mr-2 hover:bg-white/5 rounded-lg transition-colors"
+            className={`md:hidden p-2 -mr-2 rounded-lg transition-colors ${isScrolled ? 'text-white hover:bg-white/10' : 'text-[#4a4a4a] hover:bg-[#4a4a4a]/5'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -179,15 +170,15 @@ export default function Navigation() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 bg-black/60 backdrop-blur-sm md:hidden transition-opacity duration-300 pointer-events-none ${isMobileMenuOpen ? 'opacity-100 z-40' : 'opacity-0'
-          }`}
+        className={`fixed inset-0 bg-black/40 backdrop-blur-sm md:hidden transition-opacity duration-300 pointer-events-none ${isMobileMenuOpen ? 'opacity-100 z-40' : 'opacity-0'}`}
       />
 
       {/* Mobile Menu */}
       <div
         data-mobile-menu
-        className={`md:hidden fixed top-[72px] left-0 right-0 bg-background border-t border-white/10 shadow-2xl transition-all duration-300 ease-in-out z-50 ${isMobileMenuOpen ? 'max-h-[calc(100vh-72px)] opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-4 overflow-hidden pointer-events-none'
-          }`}
+        className={`md:hidden fixed top-[72px] left-0 right-0 bg-white border-t border-[#e0e0e0] shadow-2xl transition-all duration-300 ease-in-out z-50 ${
+          isMobileMenuOpen ? 'max-h-[calc(100vh-72px)] opacity-100 translate-y-0' : 'max-h-0 opacity-0 -translate-y-4 overflow-hidden pointer-events-none'
+        }`}
       >
         <div className="p-4 sm:p-6 space-y-1 overflow-y-auto max-h-[calc(100vh-72px)]">
           {navLinks.map((link) => {
@@ -197,10 +188,11 @@ export default function Navigation() {
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`block transition-colors font-medium px-4 py-3.5 rounded-xl text-base ${isActive
-                  ? 'bg-primary/10 text-primary'
-                  : 'text-gray-300 hover:text-primary hover:bg-white/5'
-                  }`}
+                className={`block transition-colors font-medium px-4 py-3.5 rounded-xl text-base ${
+                  isActive
+                    ? 'bg-[#7fffd4]/15 text-[#4a4a4a]'
+                    : 'text-[#6b6b6b] hover:text-[#4a4a4a] hover:bg-[#4a4a4a]/5'
+                }`}
               >
                 {link.label}
               </a>
@@ -210,10 +202,7 @@ export default function Navigation() {
             <a
               href="#open-roles"
               onClick={(e) => handleNavClick(e, '#open-roles')}
-              className={`block px-6 py-3.5 rounded-xl text-center font-bold text-base transition-colors ${isHomePage && activeSection === 'open-roles'
-                ? 'bg-white text-primary'
-                : 'bg-primary text-background'
-                }`}
+              className="block px-6 py-3.5 rounded-xl text-center font-bold text-base bg-[#f6b130] hover:bg-[#d4940a] text-[#1a1a1a] transition-colors"
             >
               View Jobs
             </a>

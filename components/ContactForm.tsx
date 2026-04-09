@@ -348,153 +348,131 @@ export default function ContactForm() {
   };
 
   const inputClasses = `
-    w-full px-4 py-3 rounded-xl bg-white/5 border border-white/10 
-    text-white placeholder-gray-500 
-    focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20
-    transition-all duration-300
-    hover:bg-white/10 hover:border-white/20
+    w-full px-4 py-3 rounded-xl bg-white border border-[#d0d0d0]
+    text-[#4a4a4a] placeholder-[#b0b0b0]
+    focus:outline-none focus:border-[#7fffd4] focus:ring-2 focus:ring-[#7fffd4]/20
+    transition-all duration-200
     disabled:opacity-50 disabled:cursor-not-allowed
   `;
 
-  const labelClasses = "block text-sm font-medium text-gray-300 mb-2";
+  const labelClasses = "block text-sm font-medium text-[#4a4a4a] mb-1.5";
 
-  const errorClasses = "text-red-400 text-xs mt-1";
+  const errorClasses = "text-red-500 text-xs mt-1";
 
   return (
-    <section id="connect" className="pt-8 sm:pt-12 pb-24 bg-background relative overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5 pointer-events-none" />
-
+    <section id="connect" className="pt-16 sm:pt-20 pb-24 bg-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-            Ready to Scale <span className="text-primary">With Confidence?</span>
+        <div className="mb-14">
+          <div className="w-10 h-1 bg-[#7fffd4] rounded-full mb-5" />
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#4a4a4a] mb-4">
+            Ready to Scale<br className="hidden sm:block" /> With Confidence?
           </h2>
-          <p className="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto">
-            Partner with Caliber Business Resource for premium managed staffing solutions.<br />
-            Reduce overhead while improving your operational efficiency.
+          <p className="text-base sm:text-lg text-[#6b6b6b] max-w-xl">
+            Partner with Caliber Business Resource for premium managed staffing solutions.
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 mt-8">
-          <div className="lg:col-span-2 space-y-6">
-            <div className="bg-primary/10 border border-primary/30 rounded-2xl p-6 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-[40px] pointer-events-none" />
-              <h3 className="text-lg font-bold text-primary mb-2 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <circle cx="12" cy="12" r="10"></circle>
-                  <line x1="12" y1="16" x2="12" y2="12"></line>
-                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
-                </svg>
-                Looking for a Job?
-              </h3>
-              <p className="text-sm text-primary/80 mb-4">
-                This form is for business partnerships and client inquiries.
-              </p>
-              <a href="#open-roles" className="text-sm font-bold text-white hover:text-primary transition-colors flex items-center gap-1 w-max">
-                View Open Roles
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 transition-transform group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </div>
+        <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+          {/* Left — contact info, flat on dark bg */}
+          <div className="lg:col-span-2 flex flex-col gap-10">
 
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-              <h3 className="text-xl font-bold text-white mb-6">Get In Touch</h3>
-
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M20 10c0-4.418-3.582-8-8-8s-8 3.582-8 8c0 1.621.497 3.142 1.358 4.412l-.78 3.538a.5.5 0 0 0 .654.654l3.538-.78A7.96 7.96 0 0 0 12 18c4.418 0 8-3.582 8-8z"></path>
-                      <circle cx="12" cy="10" r="3"></circle>
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500 mb-1">Visit Us</p>
-                    <p className="text-white">
-                      Ruberen Complex Commercial Building,<br />
-                      Venancio P. Inting Avenue,<br />
-                      Tagbilaran City, Bohol
-                    </p>
-                  </div>
+            {/* Contact details */}
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-9 h-9 rounded-full bg-[#4a4a4a] flex items-center justify-center shrink-0 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#7fffd4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 10c0-4.418-3.582-8-8-8s-8 3.582-8 8c0 1.621.497 3.142 1.358 4.412l-.78 3.538a.5.5 0 0 0 .654.654l3.538-.78A7.96 7.96 0 0 0 12 18c4.418 0 8-3.582 8-8z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
                 </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500 mb-1">Call Us</p>
-                    <a href="tel:+14059268324" className="text-white hover:text-primary transition-colors">
-                      +1 (405) 926-8324
-                    </a>
-                  </div>
+                <div>
+                  <p className="text-xs text-[#9b9b9b] uppercase tracking-wider mb-1">Visit Us</p>
+                  <p className="text-[#4a4a4a] text-sm leading-relaxed">
+                    Ruberen Complex Commercial Building,<br />
+                    Venancio P. Inting Avenue,<br />
+                    Tagbilaran City, Bohol
+                  </p>
                 </div>
+              </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 bg-primary/20 rounded-xl flex items-center justify-center shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                      <polyline points="22,6 12,13 2,6"></polyline>
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500 mb-1">Email Us</p>
-                    <ObfuscatedEmail
-                      user="info"
-                      domain="caliberbusinessresource.com"
-                      className="text-white hover:text-primary transition-colors"
-                    />
-                  </div>
+              <div className="flex items-start gap-4">
+                <div className="w-9 h-9 rounded-full bg-[#4a4a4a] flex items-center justify-center shrink-0 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#7fffd4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs text-[#9b9b9b] uppercase tracking-wider mb-1">Call Us</p>
+                  <a href="tel:+14059268324" className="text-[#4a4a4a] hover:text-[#0d9e70] transition-colors text-sm">
+                    +1 (405) 926-8324
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-9 h-9 rounded-full bg-[#4a4a4a] flex items-center justify-center shrink-0 mt-0.5">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#7fffd4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs text-[#9b9b9b] uppercase tracking-wider mb-1">Email Us</p>
+                  <ObfuscatedEmail
+                    user="info"
+                    domain="caliberbusinessresource.com"
+                    className="text-[#4a4a4a] hover:text-[#0d9e70] transition-colors text-sm"
+                  />
                 </div>
               </div>
             </div>
 
+            {/* Divider */}
+            <div className="border-t border-[#e0e0e0]" />
 
+            {/* Social links — flat inline */}
             <div className="space-y-4">
               <a
                 href="https://www.facebook.com/profile.php?id=61561838143537"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block p-4 rounded-2xl bg-blue-600/10 border border-blue-500/30 hover:border-blue-500 transition-all duration-500 hover:scale-[1.02]"
+                className="flex items-center gap-3 group"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-600 to-blue-700 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold group-hover:text-blue-400 transition-colors">Facebook</h4>
-                    <p className="text-blue-400 text-sm">@CaliberBusinessResource</p>
-                  </div>
+                <div className="w-8 h-8 rounded-full bg-[#4a4a4a] group-hover:bg-[#0d9e70] transition-colors flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.77,7.46H14.5v-1.9c0-.9.6-1.1,1-1.1h3V.5h-4.33C10.24.5,9.5,3.44,9.5,5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4Z" />
+                  </svg>
                 </div>
+                <span className="text-sm text-[#6b6b6b] group-hover:text-[#4a4a4a] transition-colors">@CaliberBusinessResource</span>
               </a>
               <a
                 href="https://www.linkedin.com/company/caliber-business-resource-bpo-inc/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block p-4 rounded-2xl bg-blue-700/10 border border-blue-600/30 hover:border-blue-600 transition-all duration-500 hover:scale-[1.02]"
+                className="flex items-center gap-3 group"
               >
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-700 to-blue-800 flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-500">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.5,2h-17A1.5,1.5,0,0,0,2,3.5v17A1.5,1.5,0,0,0,3.5,22h17a1.5,1.5,0,0,0,1.5-1.5v-17A1.5,1.5,0,0,0,20.5,2ZM8,19H5v-9h3ZM6.5,8.25A1.75,1.75,0,1,1,8.25,6.5,1.75,1.75,0,0,1,6.5,8.25ZM19,19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74,1.74,0,0,0,13,14.19a.66.66,0,0,0,.14.03h.14V13h-3v-9h3V9A3,3,0,0,1,15.46,6.06c1.58,0,2.54,1,2.54,2.93Z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="text-white font-bold group-hover:text-blue-400 transition-colors">LinkedIn</h4>
-                    <p className="text-blue-400 text-sm">Caliber Business Resource</p>
-                  </div>
+                <div className="w-8 h-8 rounded-full bg-[#4a4a4a] group-hover:bg-[#0d9e70] transition-colors flex items-center justify-center">
+                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M20.5,2h-17A1.5,1.5,0,0,0,2,3.5v17A1.5,1.5,0,0,0,3.5,22h17a1.5,1.5,0,0,0,1.5-1.5v-17A1.5,1.5,0,0,0,20.5,2ZM8,19H5v-9h3ZM6.5,8.25A1.75,1.75,0,1,1,8.25,6.5,1.75,1.75,0,0,1,6.5,8.25ZM19,19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74,1.74,0,0,0,13,14.19a.66.66,0,0,0,.14.03h.14V13h-3v-9h3V9A3,3,0,0,1,15.46,6.06c1.58,0,2.54,1,2.54,2.93Z" />
+                  </svg>
                 </div>
+                <span className="text-sm text-[#6b6b6b] group-hover:text-[#4a4a4a] transition-colors">Caliber Business Resource</span>
               </a>
             </div>
+
+            {/* Divider */}
+            <div className="border-t border-[#e0e0e0]" />
+
+            {/* Job notice — inline, no box */}
+            <p className="text-sm text-[#9b9b9b]">
+              Looking for a job?{' '}
+              <a href="#open-roles" className="text-[#0d9e70] hover:underline font-medium">View open roles →</a>
+            </p>
           </div>
 
+          {/* Right — form on dark bg, no card wrapper */}
           <div className="lg:col-span-3">
-            <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/10 shadow-2xl">
+            <div className="bg-transparent">
               {submitStatus === "success" ? (
                 <div className="text-center py-12">
                   <div className="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -502,13 +480,13 @@ export default function ContactForm() {
                       <polyline points="20 6 9 17 4 12"></polyline>
                     </svg>
                   </div>
-                  <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                  <p className="text-gray-400 mb-6">
+                  <h3 className="text-2xl font-bold text-[#4a4a4a] mb-2">Message Sent!</h3>
+                  <p className="text-[#6b6b6b] mb-6">
                     Thank you for reaching out. We&apos;ll get back to you within 24-48 hours.
                   </p>
                   <button
                     onClick={() => setSubmitStatus("idle")}
-                    className="bg-primary hover:bg-primary/90 text-background px-6 py-3 rounded-xl font-bold transition-all duration-300 hover:shadow-[0_0_20px_-5px_rgba(255,193,7,0.5)]"
+                    className="bg-[#f6b130] hover:bg-[#d4940a] text-[#1a1a1a] px-6 py-3 rounded-xl font-bold transition-colors"
                   >
                     Send Another Message
                   </button>
@@ -593,9 +571,9 @@ export default function ContactForm() {
                         onChange={handleChange}
                         className={`${inputClasses} appearance-none cursor-pointer bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20stroke%3D%22%239ca3af%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%222%22%20d%3D%22M19%209l-7%207-7-7%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.5rem_1.5rem] bg-[right_0.75rem_center] bg-no-repeat pr-10`}
                       >
-                        <option value="" className="bg-slate-800">Select company size</option>
+                        <option value="" className="bg-white">Select company size</option>
                         {companySizes.map((size) => (
-                          <option key={size} value={size} className="bg-slate-800">
+                          <option key={size} value={size} className="bg-white">
                             {size}
                           </option>
                         ))}
@@ -649,9 +627,9 @@ export default function ContactForm() {
                         onChange={handleChange}
                         className={`${inputClasses} appearance-none cursor-pointer bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20stroke%3D%22%239ca3af%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%222%22%20d%3D%22M19%209l-7%207-7-7%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.5rem_1.5rem] bg-[right_0.75rem_center] bg-no-repeat pr-10 ${errors.staffRequired ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20' : ''}`}
                       >
-                        <option value="" className="bg-slate-800">Select staff required</option>
+                        <option value="" className="bg-white">Select staff required</option>
                         {staffRequired.map((staff) => (
-                          <option key={staff} value={staff} className="bg-slate-800">
+                          <option key={staff} value={staff} className="bg-white">
                             {staff}
                           </option>
                         ))}
@@ -687,9 +665,9 @@ export default function ContactForm() {
                       onChange={handleChange}
                       className={`${inputClasses} appearance-none cursor-pointer bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20fill%3D%22none%22%20viewBox%3D%220%200%2024%2024%22%20stroke%3D%22%239ca3af%22%3E%3Cpath%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20stroke-width%3D%222%22%20d%3D%22M19%209l-7%207-7-7%22%2F%3E%3C%2Fsvg%3E')] bg-[length:1.5rem_1.5rem] bg-[right_0.75rem_center] bg-no-repeat pr-10 ${errors.country ? 'border-red-400 focus:border-red-400 focus:ring-red-400/20' : ''}`}
                     >
-                      <option value="" className="bg-slate-800">Select country</option>
+                      <option value="" className="bg-white">Select country</option>
                       {countries.map((country) => (
-                        <option key={country} value={country} className="bg-slate-800">
+                        <option key={country} value={country} className="bg-white">
                           {country}
                         </option>
                       ))}
@@ -711,14 +689,14 @@ export default function ContactForm() {
                       placeholder="Tell us about your needs..."
                       maxLength={MAX_LENGTHS.message}
                     />
-                    <p className="text-gray-600 text-xs text-right mt-1">
+                    <p className="text-[#9b9b9b] text-xs text-right mt-1">
                       {formData.message.length}/{MAX_LENGTHS.message}
                     </p>
                     {errors.message && <p className={errorClasses}>{errors.message}</p>}
                   </div>
 
                   {cooldownRemaining > 0 && (
-                    <p className="text-yellow-400 text-sm text-center">
+                    <p className="text-[#4a4a4a] text-sm text-center">
                       Please wait {Math.floor(cooldownRemaining / 60)}m {cooldownRemaining % 60}s before submitting again.
                     </p>
                   )}
@@ -726,7 +704,7 @@ export default function ContactForm() {
                   <button
                     type="submit"
                     disabled={isSubmitting || cooldownRemaining > 0}
-                    className="w-full bg-primary hover:bg-primary/90 disabled:bg-primary/50 disabled:cursor-not-allowed text-background px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-[0_0_30px_-5px_rgba(255,193,7,0.5)] transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-2"
+                    className="w-full bg-[#f6b130] hover:bg-[#d4940a] disabled:opacity-50 disabled:cursor-not-allowed text-[#1a1a1a] px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 hover:shadow-lg transform hover:-translate-y-1 active:translate-y-0 flex items-center justify-center gap-2"
                   >
                     {isSubmitting ? (
                       <>
@@ -748,14 +726,14 @@ export default function ContactForm() {
                   </button>
 
                   {submitStatus === "error" && (
-                    <p className="text-red-400 text-center text-sm">
+                    <p className="text-red-500 text-center text-sm">
                       Something went wrong. Please try again later.
                     </p>
                   )}
 
-                  <p className="text-center text-gray-500 text-sm">
+                  <p className="text-center text-[#9b9b9b] text-sm">
                     By submitting this form, you agree to our{" "}
-                    <a href="/privacy-policy" className="text-primary hover:underline">Privacy Policy</a>
+                    <a href="/privacy-policy" className="text-[#0d9e70] hover:underline">Privacy Policy</a>
                   </p>
                 </form>
               )}
