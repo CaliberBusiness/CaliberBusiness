@@ -17,7 +17,7 @@ interface DifferentiationProps {
 
 export default function Differentiation({ data }: DifferentiationProps) {
   return (
-    <section id="differentiation" className="py-20 sm:py-28 bg-gradient-to-b from-[#fffdd0] via-[#fffdd0]/70 to-white border-b border-[#e8e0c0]">
+    <section id="differentiation" className="py-20 sm:py-28 bg-[#fffdd0] border-b border-[#e8e0c0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#4a4a4a] mb-3">

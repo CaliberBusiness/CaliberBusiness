@@ -25,7 +25,7 @@ interface StatisticsProps {
 
 export default function Statistics({ data }: StatisticsProps) {
   return (
-    <section className="py-20 sm:py-28 bg-gradient-to-b from-[#d3d3d3]/60 via-[#d3d3d3]/30 to-white">
+    <section className="py-20 sm:py-28 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16 px-4 sm:px-0">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#4a4a4a] mb-3">
@@ -38,7 +38,7 @@ export default function Statistics({ data }: StatisticsProps) {
         </div>
 
         {/* Open number strip — no boxes, dividers only */}
-        <div className="flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-[#4a4a4a]/20 mb-16 sm:mb-20 bg-white/70 rounded-2xl overflow-hidden shadow-sm">
+        <div className="flex flex-col sm:flex-row divide-y sm:divide-y-0 sm:divide-x divide-[#4a4a4a]/15 mb-16 sm:mb-20 bg-[#f7f7f7] rounded-2xl overflow-hidden">
           {data.stats.map((stat) => (
             <AnimatedStat key={stat.label} stat={stat} />
           ))}

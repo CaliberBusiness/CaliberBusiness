@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function ClosingCTA() {
   return (
-    <section className="pt-12 sm:pt-16 pb-8 sm:pb-12 bg-gradient-to-br from-[#fffdd0]/50 via-white to-[#7fffd4]/10 border-t border-[#e8e0c0]">
+    <section className="pt-12 sm:pt-16 pb-8 sm:pb-12 bg-[#fffdd0] border-t border-[#e8e0c0]">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="w-10 h-1 bg-[#7fffd4] mx-auto rounded-full mb-6" />
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#4a4a4a] mb-6 text-balance">

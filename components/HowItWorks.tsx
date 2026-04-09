@@ -17,7 +17,7 @@ interface HowItWorksProps {
 
 export default function HowItWorks({ data }: HowItWorksProps) {
   return (
-    <section className="py-20 sm:py-28 bg-gradient-to-br from-white via-[#fffdd0]/60 to-[#7fffd4]/10">
+    <section className="py-20 sm:py-28 bg-[#fffdd0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#4a4a4a] mb-3">

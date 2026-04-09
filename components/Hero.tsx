@@ -24,7 +24,7 @@ export default function Hero({ data }: HeroProps) {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-white via-white to-[#fffdd0]/40 pt-24 lg:pt-32 pb-16 lg:pb-24"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white pt-24 lg:pt-32 pb-16 lg:pb-24"
     >
       {/* Subtle dot grid pattern */}
       <div
