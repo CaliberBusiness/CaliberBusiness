@@ -190,6 +190,7 @@ export default function ContactForm() {
   // --- Phase 2: Anti-Spam ---
   const [honeypot, setHoneypot] = useState(""); // Bot trap - should remain empty
   const [cooldownRemaining, setCooldownRemaining] = useState(0);
+  const [smsConsent, setSmsConsent] = useState(false);
 
   // Check localStorage on mount for existing cooldown
   useEffect(() => {
@@ -311,6 +312,7 @@ export default function ContactForm() {
         message: sanitizeInput(formData.message),
         email: formData.email.trim(),
         phoneNumber: formData.phoneNumber.trim(),
+        smsConsent,
       };
 
       const response = await fetch("https://formspree.io/f/xpqjnnwv", {
@@ -700,6 +702,22 @@ export default function ContactForm() {
                       Please wait {Math.floor(cooldownRemaining / 60)}m {cooldownRemaining % 60}s before submitting again.
                     </p>
                   )}
+
+                  <div className="space-y-1">
+                    <div className="flex items-start gap-3">
+                      <input
+                        type="checkbox"
+                        id="smsConsent"
+                        name="smsConsent"
+                        checked={smsConsent}
+                        onChange={(e) => setSmsConsent(e.target.checked)}
+                        className="mt-1 w-4 h-4 shrink-0 accent-[#4a4a4a] cursor-pointer"
+                      />
+                      <label htmlFor="smsConsent" className="text-sm text-[#6b6b6b] leading-relaxed cursor-pointer">
+                        I agree to receive SMS messages from Caliber Business Resource BPO Inc. Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out.
+                      </label>
+                    </div>
+                  </div>
 
                   <button
                     type="submit"
