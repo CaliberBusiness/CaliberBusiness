@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect } from "react";
 import ObfuscatedEmail from "./ObfuscatedEmail";
 
 // --- Security: Sanitization Utilities ---
@@ -714,7 +714,7 @@ export default function ContactForm() {
                         className="mt-1 w-4 h-4 shrink-0 accent-[#4a4a4a] cursor-pointer"
                       />
                       <label htmlFor="smsConsent" className="text-sm text-[#6b6b6b] leading-relaxed cursor-pointer">
-                        I agree to receive SMS messages from Caliber Business Resource BPO Inc. Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out.
+                        I agree to be contacted by Caliber Business Resource Inc. via phone call and SMS for staffing consultation and business inquiries. Message frequency varies. Message &amp; data rates may apply. Reply STOP to opt out.
                       </label>
                     </div>
                   </div>
