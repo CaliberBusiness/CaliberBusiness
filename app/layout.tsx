@@ -25,6 +25,14 @@ export const metadata: Metadata = {
   description: "Hire dedicated remote teams from the Philippines. Caliber Business Resource offers fully managed BPO staffing for customer support, data entry, accounting, and tech support. Get a free quote.",
   keywords: ["Philippines outsourcing company", "remote staffing Philippines", "BPO services Philippines", "offshore team Philippines", "Caliber Business Resource", "micro call center", "outsource customer service Philippines", "hire virtual assistants Philippines"],
   authors: [{ name: "Caliber Business Resource" }],
+  icons: {
+    icon: [
+      { url: '/images/logo.jpg', type: 'image/jpeg' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: { url: '/images/logo.jpg', type: 'image/jpeg' },
+    shortcut: '/images/logo.jpg',
+  },
   openGraph: {
     title: "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
     description: "Hire dedicated remote teams from the Philippines. Caliber Business Resource offers fully managed BPO staffing for customer support, data entry, accounting, and tech support.",
@@ -59,7 +67,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
       <head>
-        <link rel="icon" href="/favicon.ico" sizes="any" />
         {/* Phase 4: Security Headers via Meta Tags */}
         <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
         <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
