@@ -405,8 +405,8 @@ export default function ContactForm() {
                 </div>
                 <div>
                   <p className="text-xs text-[#9b9b9b] uppercase tracking-wider mb-1">Call Us</p>
-                  <a href="tel:+14059268324" className="text-[#4a4a4a] hover:text-[#0d9e70] transition-colors text-sm">
-                    +1 (405) 926-8324
+                  <a href="tel:+12144293276" className="text-[#4a4a4a] hover:text-[#0d9e70] transition-colors text-sm">
+                    +1 (214) 429-3276
                   </a>
                 </div>
               </div>

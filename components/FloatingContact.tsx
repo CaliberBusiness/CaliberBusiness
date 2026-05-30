@@ -97,7 +97,7 @@ export default function FloatingContact() {
                 Message us on Messenger
               </button>
               <a
-                href="tel:+14059268324"
+                href="tel:+12144293276"
                 className="flex items-center gap-2 px-3 py-2 bg-green-50 hover:bg-green-100 rounded-lg text-green-600 text-sm font-medium transition-colors"
               >
                 <Phone className="w-4 h-4" />
