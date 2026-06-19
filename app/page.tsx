@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Navigation from "@/components/Navigation";
 import Hero from "@/components/Hero";
 import Credibility from "@/components/Credibility";
+import Partners from "@/components/Partners";
 import Statistics from "@/components/Statistics";
 import Services from "@/components/Services";
 import HowItWorks from "@/components/HowItWorks";
@@ -95,6 +96,7 @@ export default function Home() {
       <Navigation />
       <Hero data={data.hero} />
       <Credibility data={data.credibility} />
+      <Partners data={data.partners} />
       <Statistics data={data.statistics} />
       <Services data={data.services} />
       <HowItWorks data={data.howItWorks} />

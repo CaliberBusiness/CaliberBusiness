@@ -93,6 +93,33 @@
             }
         ]
     },
+    "partners": {
+        "title": "Trusted Partners &",
+        "titleHighlight": "Integrations",
+        "logos": [
+            {
+                "name": "FIL-Global Immigration Services Corporation",
+                "image": "/images/partners/fil-global.png"
+            },
+            {
+                "name": "HighLevel",
+                "image": "/images/partners/ghl_logo_dark.png"
+            },
+            {
+                "name": "ICEF",
+                "image": "/images/partners/icef-dark.svg"
+            },
+            {
+                "name": "Freshworks",
+                "image": "/images/partners/freshworks-dark.svg"
+            },
+            {
+                "name": "Gwion IT Solutions",
+                "image": "/images/partners/gwion.webp",
+                "enlarge": true
+            }
+        ]
+    },
     "statistics": {
         "title": "Why Choose",
         "titleHighlight": "Caliber?",
