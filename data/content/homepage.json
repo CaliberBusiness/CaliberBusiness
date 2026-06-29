@@ -223,6 +223,18 @@
                 "title": "Web Development",
                 "description": "Experienced developers to build and maintain modern web applications using current technologies.",
                 "highlight": false
+            },
+            {
+                "icon": "Workflow",
+                "title": "GHL Systems Specialist",
+                "description": "GoHighLevel experts to set up funnels, pipelines, calendars, and CRM workflows that keep your business running on autopilot.",
+                "highlight": false
+            },
+            {
+                "icon": "Zap",
+                "title": "Marketing Automation Specialist",
+                "description": "Specialists to design and manage automated campaigns, email and SMS sequences, and lead-nurturing workflows that convert.",
+                "highlight": false
             }
         ]
     },

@@ -6,11 +6,13 @@ import {
   Calculator,
   Users,
   Wrench,
-  Code2
+  Code2,
+  Workflow,
+  Zap
 } from 'lucide-react';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  Headphones, Database, Calculator, Users, Wrench, Code2
+  Headphones, Database, Calculator, Users, Wrench, Code2, Workflow, Zap
 };
 
 interface ServicesProps {
