@@ -117,6 +117,10 @@
                 "name": "Gwion IT Solutions",
                 "image": "/images/partners/gwion.webp",
                 "enlarge": true
+            },
+            {
+                "name": "TWP",
+                "image": "/images/partners/twp.png"
             }
         ]
     },
