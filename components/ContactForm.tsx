@@ -429,6 +429,24 @@ export default function ContactForm() {
               </div>
             </div>
 
+            {/* US entity — trust signal for international clients */}
+            <div className="flex items-start gap-4 rounded-xl border border-[#e0e0e0] bg-[#fffdd0] p-4">
+              <div className="w-9 h-9 rounded-full bg-[#4a4a4a] flex items-center justify-center shrink-0 mt-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-[#7fffd4]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+              </div>
+              <div>
+                <p className="text-xs text-[#9b9b9b] uppercase tracking-wider mb-1">US-Registered Entity</p>
+                <p className="text-[#4a4a4a] text-sm leading-relaxed">
+                  Caliber Business Resource is registered in the United States with a
+                  Federal Employer Identification Number (EIN). Contract and invoice
+                  through our US entity &mdash; EIN and W-9 provided on request.
+                </p>
+              </div>
+            </div>
+
             {/* Divider */}
             <div className="border-t border-[#e0e0e0]" />
 
