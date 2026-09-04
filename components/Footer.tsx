@@ -8,6 +8,7 @@ import ObfuscatedEmail from './ObfuscatedEmail';
 interface FooterProps {
   data: {
     tagline: string;
+    addressUs: string;
     address: string;
     phone: string;
     phoneRaw: string;
@@ -61,9 +62,20 @@ export default function Footer({ data }: FooterProps) {
           <div>
             <h4 className="font-semibold text-white mb-6 uppercase tracking-wider text-xs">Contact</h4>
             <ul className="space-y-4 text-sm text-white/60">
+              {/* Two locations — labelled, or the pair reads as one garbled address */}
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-[#7fffd4] shrink-0 mt-0.5" />
-                <span>{data.address}</span>
+                <span>
+                  <span className="block text-white/40 text-[10px] uppercase tracking-wider mb-0.5">United States</span>
+                  {data.addressUs}
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <MapPin className="w-5 h-5 text-[#7fffd4] shrink-0 mt-0.5" />
+                <span>
+                  <span className="block text-white/40 text-[10px] uppercase tracking-wider mb-0.5">Philippines</span>
+                  {data.address}
+                </span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-[#7fffd4] shrink-0" />
