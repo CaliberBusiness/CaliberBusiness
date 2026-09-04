@@ -13,6 +13,9 @@ import { getHomepageData } from "@/lib/getHomepageData";
 export const metadata: Metadata = {
     title: "Privacy Policy",
     description: "Privacy Policy for Caliber Business Resource. Understand how we collect, use, and protect your data.",
+    alternates: {
+        canonical: "/privacy-policy/",
+    },
 };
 
 export default async function PrivacyPolicy() {

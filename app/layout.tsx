@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Montserrat } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
+import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,13 +18,15 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://www.caliberbusinessresource.com'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
-    template: "%s | Caliber Business Resource"
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`
   },
-  description: "Hire dedicated remote teams from the Philippines. Caliber Business Resource offers fully managed BPO staffing for customer support, data entry, accounting, and tech support. Get a free quote.",
-  keywords: ["Philippines outsourcing company", "remote staffing Philippines", "BPO services Philippines", "offshore team Philippines", "Caliber Business Resource", "micro call center", "outsource customer service Philippines", "hire virtual assistants Philippines"],
+  description: SITE_DESCRIPTION,
+  alternates: {
+    canonical: "/",
+  },
   authors: [{ name: "Caliber Business Resource" }],
   icons: {
     icon: [
@@ -34,17 +37,17 @@ export const metadata: Metadata = {
     shortcut: '/images/logo.jpg',
   },
   openGraph: {
-    title: "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
-    description: "Hire dedicated remote teams from the Philippines. Caliber Business Resource offers fully managed BPO staffing for customer support, data entry, accounting, and tech support.",
-    url: 'https://www.caliberbusinessresource.com',
-    siteName: 'Caliber Business Resource',
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
     type: "website",
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
-    description: "Hire dedicated remote teams from the Philippines. Fully managed BPO staffing for customer support, data entry, accounting, and tech support.",
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
   robots: {
     index: true,
@@ -66,12 +69,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${montserrat.variable}`}>
-      <head>
-        {/* Phase 4: Security Headers via Meta Tags */}
-        <meta httpEquiv="X-Content-Type-Options" content="nosniff" />
-        <meta httpEquiv="X-Frame-Options" content="SAMEORIGIN" />
-        <meta name="referrer" content="strict-origin-when-cross-origin" />
-      </head>
       <body className="font-sans antialiased">
         {children}
         {/* Google Analytics 4 */}

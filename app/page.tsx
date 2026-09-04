@@ -17,19 +17,33 @@ import CultureSection from "@/components/CultureSection";
 import GoogleMapsSection from "@/components/GoogleMapsSection";
 import FAQ from "@/components/FAQ";
 import { getHomepageData } from "@/lib/getHomepageData";
+import { SITE_URL, SITE_NAME, SITE_TITLE, SITE_DESCRIPTION } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const data = getHomepageData();
+  const title = data.seo?.title || SITE_TITLE;
+  const description = data.seo?.description || SITE_DESCRIPTION;
+
+  // Next.js REPLACES (does not merge) openGraph/twitter from a parent layout,
+  // so every field has to be restated here or it is silently dropped.
   return {
-    title: data.seo?.title || "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
-    description: data.seo?.description || "Hire dedicated remote teams from the Philippines. Fully managed BPO staffing for customer support, data entry, accounting, and tech support.",
+    title,
+    description,
+    alternates: {
+      canonical: "/",
+    },
     openGraph: {
-      title: data.seo?.title || "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
-      description: data.seo?.description,
+      title,
+      description,
+      url: SITE_URL,
+      siteName: SITE_NAME,
+      type: "website",
+      locale: "en_US",
     },
     twitter: {
-      title: data.seo?.title || "Philippines Outsourcing & Remote Staffing | Caliber Business Resource",
-      description: data.seo?.description,
+      card: "summary_large_image",
+      title,
+      description,
     }
   };
 }
