@@ -61,6 +61,18 @@ export default function Home() {
         "name": "Caliber Business Resource",
         "url": "https://www.caliberbusinessresource.com",
         "logo": "https://www.caliberbusinessresource.com/images/logo.jpg",
+        // The legal entity is US-registered; the LocalBusiness node below
+        // carries the Bohol operating facility. Keeping them on separate
+        // nodes is what distinguishes "US company with offshore operations"
+        // from "Philippine company" to a search engine.
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "254 Chapman Rd, Ste 208",
+          "addressLocality": "Newark",
+          "addressRegion": "DE",
+          "postalCode": "19702",
+          "addressCountry": "US"
+        },
         "contactPoint": {
           "@type": "ContactPoint",
           "telephone": data.footer.phoneRaw,
