@@ -282,11 +282,10 @@ export default function ContactForm() {
     e.preventDefault();
     setSubmitStatus("idle");
 
-    // Phase 2: Honeypot check — if filled, silently reject
-    if (honeypot) {
-      setSubmitStatus("success"); // Fake success to not alert bots
-      return;
-    }
+    // The honeypot is checked on the server (see app/api/lead/route.ts). It used
+    // to short-circuit here with a fake success, which meant a real visitor whose
+    // browser autofilled the hidden field saw "Message Sent!" while the lead was
+    // silently discarded. The value is sent as-is and the server decides.
 
     // Phase 2: Persistent Cooldown check
     if (cooldownRemaining > 0) {
@@ -313,9 +312,16 @@ export default function ContactForm() {
         email: formData.email.trim(),
         phoneNumber: formData.phoneNumber.trim(),
         smsConsent,
+        website: honeypot,
       };
 
-      const response = await fetch("https://formspree.io/f/xpqjnnwv", {
+      // Same-origin. The route forwards to GoHighLevel and then Formspree; the
+      // CRM token must never reach the browser.
+      //
+      // Trailing slash is required: next.config.js sets trailingSlash: true, so
+      // "/api/lead" answers with a 308. POSTing straight to the canonical URL
+      // avoids depending on redirect-following for a request with a body.
+      const response = await fetch("/api/lead/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -324,7 +330,11 @@ export default function ContactForm() {
         body: JSON.stringify(sanitizedData),
       });
 
-      if (!response.ok) {
+      // Only a confirmed write counts as success. A 2xx with ok:false, or any
+      // non-2xx, must show the error state — never tell someone their message
+      // was sent when it was not.
+      const result = await response.json().catch(() => null);
+      if (!response.ok || !result || result.ok !== true) {
         throw new Error("Form submission failed");
       }
 
@@ -513,8 +523,16 @@ export default function ContactForm() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6" noValidate>
-                  {/* Phase 2: Honeypot — hidden field to catch bots */}
-                  <div className="absolute opacity-0 top-0 left-0 h-0 w-0 -z-10 overflow-hidden" aria-hidden="true">
+                  {/*
+                    Honeypot — hidden field to catch bots. Checked on the server.
+
+                    Hidden with display:none rather than opacity/offset: Chrome
+                    autofill will populate an off-screen-but-rendered field, and
+                    "website" maps to the standard contact.website autofill hint,
+                    so a real visitor could trip the trap. autoComplete="off" is
+                    a hint browsers routinely ignore, not a guarantee.
+                  */}
+                  <div style={{ display: "none" }} aria-hidden="true">
                     <label htmlFor="website">Leave this empty</label>
                     <input
                       type="text"
