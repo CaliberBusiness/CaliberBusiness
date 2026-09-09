@@ -1,13 +1,16 @@
 /**
- * GoHighLevel custom-field IDs, read from the environment.
+ * GoHighLevel custom-field IDs.
  *
- * GHL addresses custom fields by ID, never by name, and the IDs differ per
- * sub-account -- so they are configuration, not constants. They are not
- * secrets; they live in env vars only so a different GHL location can be
- * pointed at without a code change.
+ * GHL addresses custom fields by ID, never by name. These IDs are static, not
+ * secret, and were read back from the live location after the fields were
+ * created -- so they are checked in as defaults rather than carried as
+ * deployment config. Only the API token is a secret worth an env var.
  *
- * Anything left unset is omitted from the payload rather than sent blank, so a
- * missing ID costs one answer, never the whole lead.
+ * Each still accepts an env override, for pointing a preview build at a
+ * different sub-account without a code change.
+ *
+ * Anything resolving to "" is omitted from the payload rather than sent blank,
+ * so a bad ID costs one answer, never the whole lead.
  *
  * Fields NOT listed here because GHL has a standard field for them:
  *   firstName, lastName, email, phone, companyName, country
@@ -20,11 +23,13 @@ export type GhlFieldKey =
     | "smsConsent";
 
 export const GHL_FIELD_IDS: Readonly<Record<GhlFieldKey, string>> = {
-    companySize: process.env.GHL_FIELD_COMPANY_SIZE ?? "",
-    staffRequired: process.env.GHL_FIELD_STAFF_REQUIRED ?? "",
-    staffCount: process.env.GHL_FIELD_STAFF_COUNT ?? "",
-    message: process.env.GHL_FIELD_MESSAGE ?? "",
-    smsConsent: process.env.GHL_FIELD_SMS_CONSENT ?? "",
+    // "Company Size" and "No. of Staff Required" are dropdowns whose options
+    // are stored with EN DASHES -- see toGhlRange() in lib/lead-normalize.ts.
+    companySize: process.env.GHL_FIELD_COMPANY_SIZE ?? "ohOizYLdqRh5JSOr2jg6",
+    staffRequired: process.env.GHL_FIELD_STAFF_REQUIRED ?? "O7fycmawxy1Ei377QWOR",
+    staffCount: process.env.GHL_FIELD_STAFF_COUNT ?? "ZZBsL3gzfxBmjSN1DYj0",
+    message: process.env.GHL_FIELD_MESSAGE ?? "AUL2fZm9cCG38MRVWlxl",
+    smsConsent: process.env.GHL_FIELD_SMS_CONSENT ?? "VtoRSUcsHvG2exax3DUy",
 };
 
 export interface GhlCustomField {
