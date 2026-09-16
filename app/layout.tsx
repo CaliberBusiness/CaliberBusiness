@@ -28,14 +28,6 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   authors: [{ name: "Caliber Business Resource" }],
-  icons: {
-    icon: [
-      { url: '/images/logo.jpg', type: 'image/jpeg' },
-      { url: '/favicon.ico', sizes: 'any' },
-    ],
-    apple: { url: '/images/logo.jpg', type: 'image/jpeg' },
-    shortcut: '/images/logo.jpg',
-  },
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
