@@ -54,6 +54,7 @@ export default function Footer({ data }: FooterProps) {
             <ul className="space-y-4 text-sm text-white/60">
               <li><Link href="/#about" className="hover:text-[#7fffd4] transition-colors">About Us</Link></li>
               <li><Link href="/#services" className="hover:text-[#7fffd4] transition-colors">Our Services</Link></li>
+              <li><Link href="/it-solutions/" className="hover:text-[#7fffd4] transition-colors">IT Solutions</Link></li>
               <li><Link href="/#open-roles" className="hover:text-[#7fffd4] transition-colors">Careers</Link></li>
             </ul>
           </div>

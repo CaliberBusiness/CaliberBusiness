@@ -1,16 +1,33 @@
 "use client";
 
+import Link from 'next/link';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { usePathname, useRouter } from 'next/navigation';
 import { getImagePath } from '@/lib/utils';
 
-const navLinks = [
+interface NavLink {
+  href: string;
+  label: string;
+  /**
+   * A real route rather than an in-page anchor. These bypass handleNavClick
+   * entirely: that handler calls preventDefault() and then either
+   * router.push('/' + href) or document.querySelector(href), neither of which
+   * is meaningful for a path — the latter throws on an invalid selector.
+   */
+  route?: boolean;
+}
+
+const navLinks: NavLink[] = [
   { href: '#home', label: 'Home' },
   { href: '#services', label: 'Services' },
+  { href: '/it-solutions/', label: 'IT Solutions', route: true },
   { href: '#our-story', label: 'About Us' },
   { href: '#connect', label: 'Contact' },
 ];
+
+/** Trailing slashes are on (next.config.js), so compare without them. */
+const stripTrailingSlash = (value: string): string => value.replace(/\/+$/, '') || '/';
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,6 +36,7 @@ export default function Navigation() {
   const pathname = usePathname();
   const router = useRouter();
   const isHomePage = pathname === '/';
+  const currentPath = stripTrailingSlash(pathname || '/');
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,7 +55,10 @@ export default function Navigation() {
       { rootMargin: '-30% 0px -30% 0px' }
     );
 
-    const sectionsToObserve = [...navLinks.map((link) => link.href.substring(1)), 'open-roles'];
+    const sectionsToObserve = [
+      ...navLinks.filter((link) => !link.route).map((link) => link.href.substring(1)),
+      'open-roles',
+    ];
     sectionsToObserve.forEach((id) => {
       const element = document.getElementById(id);
       if (element) observer.observe(element);
@@ -131,20 +152,36 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => {
-              const isActive = isHomePage && activeSection === link.href.substring(1);
+              const isActive = link.route
+                ? currentPath === stripTrailingSlash(link.href)
+                : isHomePage && activeSection === link.href.substring(1);
+              const linkClasses = `text-sm font-medium transition-colors relative group ${
+                isScrolled
+                  ? isActive ? 'text-[#7fffd4]' : 'text-white/80 hover:text-white'
+                  : isActive ? 'text-[#4a4a4a]' : 'text-[#6b6b6b] hover:text-[#4a4a4a]'
+              }`;
+              const underline = (
+                <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#7fffd4] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+              );
+
+              if (link.route) {
+                return (
+                  <Link key={link.href} href={link.href} className={linkClasses}>
+                    {link.label}
+                    {underline}
+                  </Link>
+                );
+              }
+
               return (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className={`text-sm font-medium transition-colors relative group ${
-                    isScrolled
-                      ? isActive ? 'text-[#7fffd4]' : 'text-white/80 hover:text-white'
-                      : isActive ? 'text-[#4a4a4a]' : 'text-[#6b6b6b] hover:text-[#4a4a4a]'
-                  }`}
+                  className={linkClasses}
                 >
                   {link.label}
-                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#7fffd4] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`} />
+                  {underline}
                 </a>
               );
             })}
@@ -182,17 +219,34 @@ export default function Navigation() {
       >
         <div className="p-4 sm:p-6 space-y-1 overflow-y-auto max-h-[calc(100vh-72px)]">
           {navLinks.map((link) => {
-            const isActive = isHomePage && activeSection === link.href.substring(1);
+            const isActive = link.route
+              ? currentPath === stripTrailingSlash(link.href)
+              : isHomePage && activeSection === link.href.substring(1);
+            const linkClasses = `block transition-colors font-medium px-4 py-3.5 rounded-xl text-base ${
+              isActive
+                ? 'bg-[#7fffd4]/15 text-[#4a4a4a]'
+                : 'text-[#6b6b6b] hover:text-[#4a4a4a] hover:bg-[#4a4a4a]/5'
+            }`;
+
+            if (link.route) {
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={linkClasses}
+                >
+                  {link.label}
+                </Link>
+              );
+            }
+
             return (
               <a
                 key={link.href}
                 href={link.href}
                 onClick={(e) => handleNavClick(e, link.href)}
-                className={`block transition-colors font-medium px-4 py-3.5 rounded-xl text-base ${
-                  isActive
-                    ? 'bg-[#7fffd4]/15 text-[#4a4a4a]'
-                    : 'text-[#6b6b6b] hover:text-[#4a4a4a] hover:bg-[#4a4a4a]/5'
-                }`}
+                className={linkClasses}
               >
                 {link.label}
               </a>

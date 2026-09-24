@@ -1,5 +1,6 @@
 "use client";
 
+import Link from 'next/link';
 import {
   Headphones,
   Database,
@@ -10,6 +11,7 @@ import {
   Workflow,
   Zap
 } from 'lucide-react';
+import { SERVICE_CARD_CROSSLINKS } from '@/lib/it-solutions';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Headphones, Database, Calculator, Users, Wrench, Code2, Workflow, Zap
@@ -42,6 +44,10 @@ export default function Services({ data }: ServicesProps) {
         <div className="grid md:grid-cols-2 gap-0 divide-y divide-[#e0e0e0] border border-[#e0e0e0] rounded-2xl overflow-hidden">
           {data.items.map((service) => {
             const IconComponent = iconMap[service.icon];
+            // Cross-sell hook for the two build-it-for-you services. Keyed by
+            // title in lib/it-solutions.ts so the CMS schema stays untouched;
+            // any other card renders no link at all.
+            const crosslink = SERVICE_CARD_CROSSLINKS[service.title];
             return (
               <div
                 key={service.title}
@@ -65,6 +71,14 @@ export default function Services({ data }: ServicesProps) {
                   <p className="text-[#6b6b6b] text-sm leading-relaxed">
                     {service.description}
                   </p>
+                  {crosslink && (
+                    <Link
+                      href={crosslink.href}
+                      className="inline-block mt-2.5 text-xs font-semibold text-[#0d9e70] hover:underline"
+                    >
+                      {crosslink.label}
+                    </Link>
+                  )}
                 </div>
               </div>
             );

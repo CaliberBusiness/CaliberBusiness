@@ -1,9 +1,11 @@
 "use client";
 
-import { MessageSquare, Users, Handshake, Rocket } from 'lucide-react';
+import { MessageSquare, Users, Handshake, Rocket, ClipboardCheck, ArrowRight } from 'lucide-react';
 
+// ClipboardCheck is used only by /it-solutions/ ("How it starts"); the
+// homepage steps use the original four.
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  MessageSquare, Users, Handshake, Rocket
+  MessageSquare, Users, Handshake, Rocket, ClipboardCheck
 };
 
 interface HowItWorksProps {
@@ -11,11 +13,18 @@ interface HowItWorksProps {
     title: string;
     titleHighlight: string;
     subtitle: string;
-    steps: { icon: string; number: string; title: string; description: string }[];
+    // readonly so a typed `as const` step list can be passed straight in; a
+    // mutable array (what the homepage JSON gives) still satisfies this.
+    steps: readonly { icon: string; number: string; title: string; description: string }[];
   };
+  /**
+   * Optional CTA under the steps. The homepage does not pass one, so its
+   * output is unchanged; /it-solutions/ uses it to close the section.
+   */
+  cta?: { label: string; href: string };
 }
 
-export default function HowItWorks({ data }: HowItWorksProps) {
+export default function HowItWorks({ data, cta }: HowItWorksProps) {
   return (
     <section className="py-20 sm:py-28 bg-[#fffdd0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -70,6 +79,17 @@ export default function HowItWorks({ data }: HowItWorksProps) {
             })}
           </div>
         </div>
+
+        {cta && (
+          <div className="mt-14 text-center">
+            <a href={cta.href} className="btn-primary">
+              <span className="flex items-center justify-center gap-2">
+                {cta.label}
+                <ArrowRight className="w-5 h-5" />
+              </span>
+            </a>
+          </div>
+        )}
       </div>
     </section>
   );
