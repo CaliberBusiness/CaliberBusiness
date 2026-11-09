@@ -8,6 +8,7 @@ import { getImagePath } from '@/lib/utils';
 const navLinks = [
   { href: '#home', label: 'Home' },
   { href: '#services', label: 'Services' },
+  { label: 'IT Solutions', href: 'https://it.caliberbusinessresource.com', external: true },
   { href: '#our-story', label: 'About Us' },
   { href: '#connect', label: 'Contact' },
 ];
@@ -37,7 +38,10 @@ export default function Navigation() {
       { rootMargin: '-30% 0px -30% 0px' }
     );
 
-    const sectionsToObserve = [...navLinks.map((link) => link.href.substring(1)), 'open-roles'];
+    const sectionsToObserve = [
+      ...navLinks.filter((link) => !link.external).map((link) => link.href.substring(1)),
+      'open-roles',
+    ];
     sectionsToObserve.forEach((id) => {
       const element = document.getElementById(id);
       if (element) observer.observe(element);
@@ -131,12 +135,12 @@ export default function Navigation() {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => {
-              const isActive = isHomePage && activeSection === link.href.substring(1);
+              const isActive = !link.external && isHomePage && activeSection === link.href.substring(1);
               return (
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  onClick={link.external ? undefined : (e) => handleNavClick(e, link.href)}
                   className={`text-sm font-medium transition-colors relative group ${
                     isScrolled
                       ? isActive ? 'text-[#7fffd4]' : 'text-white/80 hover:text-white'
@@ -182,12 +186,12 @@ export default function Navigation() {
       >
         <div className="p-4 sm:p-6 space-y-1 overflow-y-auto max-h-[calc(100vh-72px)]">
           {navLinks.map((link) => {
-            const isActive = isHomePage && activeSection === link.href.substring(1);
+            const isActive = !link.external && isHomePage && activeSection === link.href.substring(1);
             return (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
+                onClick={link.external ? undefined : (e) => handleNavClick(e, link.href)}
                 className={`block transition-colors font-medium px-4 py-3.5 rounded-xl text-base ${
                   isActive
                     ? 'bg-[#7fffd4]/15 text-[#4a4a4a]'

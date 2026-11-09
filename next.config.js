@@ -18,6 +18,12 @@ const nextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      { source: '/it-solutions', destination: 'https://it.caliberbusinessresource.com', permanent: true },
+      { source: '/it-solutions/', destination: 'https://it.caliberbusinessresource.com', permanent: true },
+    ];
+  },
 };
 
 module.exports = nextConfig;
