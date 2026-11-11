@@ -9,12 +9,34 @@ import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
 import FloatingContact from "@/components/FloatingContact";
 import { getHomepageData } from "@/lib/getHomepageData";
+import { SITE_URL, SITE_NAME, OG_IMAGE } from "@/lib/seo";
 
+const PAGE_TITLE = "Terms of Use";
+const PAGE_DESCRIPTION = "Terms of Use for Caliber Business Resource. Read our terms and conditions for using our services.";
+const PAGE_PATH = "/terms-of-use/";
+
+// Next.js REPLACES (does not merge) openGraph/twitter from the root layout,
+// so every field has to be restated here or the homepage values leak through.
 export const metadata: Metadata = {
-    title: "Terms of Use",
-    description: "Terms of Use for Caliber Business Resource. Read our terms and conditions for using our services.",
+    title: PAGE_TITLE,
+    description: PAGE_DESCRIPTION,
     alternates: {
-        canonical: "/terms-of-use/",
+        canonical: PAGE_PATH,
+    },
+    openGraph: {
+        title: `${PAGE_TITLE} | ${SITE_NAME}`,
+        description: PAGE_DESCRIPTION,
+        url: `${SITE_URL}${PAGE_PATH}`,
+        siteName: SITE_NAME,
+        type: "website",
+        locale: "en_US",
+        images: [OG_IMAGE],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: `${PAGE_TITLE} | ${SITE_NAME}`,
+        description: PAGE_DESCRIPTION,
+        images: [OG_IMAGE],
     },
 };
 
