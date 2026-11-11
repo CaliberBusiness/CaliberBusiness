@@ -1,13 +1,19 @@
 'use client';
 
 import { Building2, Target, Heart, Volume2, VolumeX } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { getImagePath } from '@/lib/utils';
 import { useScrollAnimation } from '@/lib/useScrollAnimation';
 
 const valueIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Building2, Target, Heart
 };
+
+// First frame of /video/video.mp4. Update it if the story video is replaced.
+const STORY_VIDEO_POSTER = '/images/story-video-poster.webp';
+// Intrinsic size of the encoded video and poster; reserves the 16:9 box before either loads.
+const STORY_VIDEO_WIDTH = 1280;
+const STORY_VIDEO_HEIGHT = 720;
 
 interface AboutProps {
   data: {
@@ -44,6 +50,30 @@ export default function About({ data }: AboutProps) {
   const ethosAnimation = useScrollAnimation({ threshold: 0.2 });
   const valuesAnimation = useScrollAnimation({ threshold: 0.2 });
 
+  // The story video is not fetched until it scrolls into view (preload="none",
+  // no autoPlay). It plays while visible and pauses when scrolled away.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch((error: unknown) => {
+            // Expected when the browser blocks autoplay (e.g. data saver); the poster stays visible.
+            console.warn('Story video did not start playing', error);
+          });
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
   const toggleMute = () => {
     if (videoRef.current) {
       videoRef.current.muted = !isMuted;
@@ -78,7 +108,10 @@ export default function About({ data }: AboutProps) {
                   <video
                     ref={videoRef}
                     src={getImagePath(data.storyVideoUrl)}
-                    autoPlay
+                    poster={getImagePath(STORY_VIDEO_POSTER)}
+                    width={STORY_VIDEO_WIDTH}
+                    height={STORY_VIDEO_HEIGHT}
+                    preload="none"
                     loop
                     muted={isMuted}
                     playsInline
@@ -123,6 +156,8 @@ export default function About({ data }: AboutProps) {
               <img
                 src={getImagePath(data.ceoImage)}
                 alt="CEO"
+                loading="lazy"
+                decoding="async"
                 className="rounded-2xl shadow-lg w-full max-w-md mx-auto border border-[#e0e0e0]"
               />
             </div>
@@ -175,6 +210,8 @@ export default function About({ data }: AboutProps) {
                     <img
                       src={getImagePath(member.image)}
                       alt={member.name}
+                      loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#4a4a4a] via-[#4a4a4a]/20 to-transparent opacity-70" />

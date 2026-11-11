@@ -53,6 +53,8 @@ export default function Partners({ data }: PartnersProps) {
                 <img
                   src={getImagePath(logo.image)}
                   alt={logo.name}
+                  loading="lazy"
+                  decoding="async"
                   className={`${logo.enlarge ? ENLARGED_LOGO_SIZE : DEFAULT_LOGO_SIZE} w-auto object-contain`}
                   style={{ filter: 'grayscale(100%)', opacity: 1 }}
                 />

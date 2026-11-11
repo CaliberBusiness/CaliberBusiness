@@ -31,6 +31,8 @@ export default function Footer({ data }: FooterProps) {
                 <img
                   src={getImagePath('/images/logo.jpg')}
                   alt="Caliber Business Resource Logo"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>
